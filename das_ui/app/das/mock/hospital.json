@@ -1,0 +1,641 @@
+[{
+		"id": 1,
+		"hospital": "Pragathi hospital",
+		"phone": 7776665522,
+		"feedback": "Good",
+		"address": "Pragathi Nagar,Nizamabad",
+		"status": "active",
+		"departmentId": 1,
+		"department": "Anatomy Department",
+		"departments": [{
+				"id": 1,
+				"name": "Anatomy Department"
+			}, {
+				"id": 2,
+				"name": "Anesthesia Department"
+			}, {
+				"id": 3,
+				"name": "Cardiology Departments"
+			}, {
+				"id": 4,
+				"name": "Cardio-thoracis Surgery Department "
+			}, {
+				"id": 5,
+				"name": "Dental Departments"
+			}, {
+				"id": 6,
+				"name": "Pharmacology Departments"	
+			}, {
+				"id": 7,
+				"name": "Endocrinology  Departments"
+			}, {
+				"id": 8,
+				"name": "Ent Departments"
+			}, {
+				"id": 9,
+				"name": "Gastroenterology Departments"
+			}, {
+				"id": 10,
+				"name": "Nephrology  Departments"
+			}
+
+		],
+
+		"facilitiesId": 1,
+		"facilities": "Physiotherapy",
+		"facility": [{
+			"id": 1,
+			"name": "Physiotherapy"
+		}, {
+			"id": 2,
+			"name": "Pharmacy"
+		}, {
+			"id": 3,
+			"name": "Radiology/X-ray facility"
+		}],
+		"statusId": 1,
+		"status1": "active",
+		"select": [{
+			"id": 1,
+			"name": "active"
+		}, {
+			"id": 2,
+			"name": "inactive"
+		}]
+	},
+
+
+
+	{
+		"id": 2,
+		"hospital": "Prathiba hospital",
+		"phone": 7776665544,
+		"address": "H.No:1-597,Nizamabad",
+		"feedback": "very Good",
+		"status": "inactive",
+		"departmentId": 2,
+		"department": "Anesthesia department",
+		"departments": [{
+				"id": 1,
+				"name": "Anatomy Department"
+			}, {
+				"id": 2,
+				"name": "Anesthesia Department"
+			}, {
+				"id": 3,
+				"name": "Cardiology Departments"
+			}, {
+				"id": 4,
+				"name": "Cardio-thoracis Surgery Department "
+			}, {
+				"id": 5,
+				"name": "Dental Departments"
+			}, {
+				"id": 6,
+				"name": "Pharmacology Departments"
+			}, {
+				"id": 7,
+				"name": "Endocrinology  Departments"
+			}, {
+				"id": 8,
+				"name": "Ent Departments"
+			}, {
+				"id": 9,
+				"name": "Gastroenterology Departments"
+			}, {
+				"id": 10,
+				"name": "Nephrology  Departments"
+			}
+
+		],
+
+		"facilitiesId": 2,
+		"facilities": "Pharmacy",
+		"facility": [{
+			"id": 1,
+			"name": "Physiotherapy"
+		}, {
+			"id": 2,
+			"name": "Pharmacy"
+		}, {
+			"id": 3,
+			"name": "Radiology/X-ray facility"
+		}],
+		"statusId": 2,
+		"status2": "inactive",
+		"select": [{
+			"id": 1,
+			"name": "active"
+		}, {
+			"id": 2,
+			"name": "inactive"
+		}]
+	},
+
+	{
+		"id": 3,
+		"hospital": "Govt hospital",
+		"phone": 7776665533,
+		"address": "H.No:1-77,Nizamabad",
+		"feedback": "Not Bad",
+		"status": "active",
+		"departmentId": 3,
+		"department": "Cardiology Departments",
+		"departments":  [{
+				"id": 1,
+				"name": "Anatomy Department"
+			}, {
+				"id": 2,
+				"name": "Anesthesia Department"
+			}, {
+				"id": 3,
+				"name": "Cardiology Departments"
+			}, {
+				"id": 4,
+				"name": "Cardio-thoracis Surgery Department "
+			}, {
+				"id": 5,
+				"name": "Dental Departments"
+			}, {
+				"id": 6,
+				"name": "Pharmacology Departments"
+			}, {
+				"id": 7,
+				"name": "Endocrinology  Departments"
+			}, {
+				"id": 8,
+				"name": "Ent Departments"
+			}, {
+				"id": 9,
+				"name": "Gastroenterology Departments"
+			}, {
+				"id": 10,
+				"name": "Nephrology  Departments"
+			}
+
+		],
+		"facilitiesId": 3,
+		"facilities": "Radiology/X-ray facility",
+		"facility": [{
+			"id": 1,
+			"name": "Physiotherapy"
+		}, {
+			"id": 2,
+			"name": "Pharmacy"
+		}, {
+			"id": 3,
+			"name": "Radiology/X-ray facility"
+		}],
+		"statusId": 3,
+		"status": "active",
+		"select": [{
+			"id": 1,
+			"name": "active"
+		}, {
+			"id": 2,
+			"name": "inactive"
+		}]
+	}, {
+		"id": 4,
+		"hospital": "Amrutha Laxmi Hospital",
+		"phone": 7776665533,
+		"address": "H.No:1-77,Nizamabad",
+		"feedback": "Not Bad",
+		"status": "active",
+		"departmentId": 4,
+		"department": "Cardio-thoracis Surgery Department",
+		"departments": [{
+				"id": 1,
+				"name": "Anatomy Department"
+			}, {
+				"id": 2,
+				"name": "Anesthesia Department"
+			}, {
+				"id": 3,
+				"name": "Cardiology Departments"
+			}, {
+				"id": 4,
+				"name": "Cardio-thoracis Surgery Department "
+			}, {
+				"id": 5,
+				"name": "Dental Departments"
+			}, {
+				"id": 6,
+				"name": "Pharmacology Departments"
+			}, {
+				"id": 7,
+				"name": "Endocrinology  Departments"
+			}, {
+				"id": 8,
+				"name": "Ent Departments"
+			}, {
+				"id": 9,
+				"name": "Gastroenterology Departments"
+			}, {
+				"id": 10,
+				"name": "Nephrology  Departments"
+			}
+
+		],
+		"facilitiesId": 4,
+		"facilities": "Radiology/X-ray facility",
+		"facility": [{
+			"id": 1,
+			"name": "Physiotherapy"
+		}, {
+			"id": 2,
+			"name": "Pharmacy"
+		}, {
+			"id": 3,
+			"name": "Radiology/X-ray facility"
+		}],
+		"statusId": 4,
+		"status": "active",
+		"select": [{
+			"id": 1,
+			"name": "active"
+		}, {
+			"id": 2,
+			"name": "inactive"
+		}]
+	}, {
+		"id": 5,
+		"hospital": "Sri Sai Hospital",
+		"phone": 7776665533,
+		"address": "H.No:1-77,Nizamabad",
+		"feedback": "Not Bad",
+		"status": "active",
+		"departmentId": 5,
+		"department": "Dental Departments",
+		"departments": [{
+				"id": 1,
+				"name": "Anatomy Department"
+			}, {
+				"id": 2,
+				"name": "Anesthesia Department"
+			}, {
+				"id": 3,
+				"name": "Cardiology Departments"
+			}, {
+				"id": 4,
+				"name": "Cardio-thoracis Surgery Department "
+			}, {
+				"id": 5,
+				"name": "Dental Departments"
+			}, {
+				"id": 6,
+				"name": "Pharmacology Departments"
+			}, {
+				"id": 7,
+				"name": "Endocrinology  Departments"
+			}, {
+				"id": 8,
+				"name": "Ent Departments"
+			}, {
+				"id": 9,
+				"name": "Gastroenterology Departments"
+			}, {
+				"id": 10,
+				"name": "Nephrology  Departments"
+			}
+
+		],
+		"facilitiesId": 3,
+		"facilities": "Radiology/X-ray facility",
+		"facility": [{
+			"id": 1,
+			"name": "Physiotherapy"
+		}, {
+			"id": 2,
+			"name": "Pharmacy"
+		}, {
+			"id": 3,
+			"name": "Radiology/X-ray facility"
+		}],
+		"statusId": 1,
+		"status": "active",
+		"select": [{
+			"id": 1,
+			"name": "active"
+		}, {
+			"id": 2,
+			"name": "inactive"
+		}]
+	}, {
+		"id": 6,
+		"hospital": "Swetha kidney Centre and meternity hospital",
+		"phone": 7776665533,
+		"address": "H.No:1-77,Nizamabad",
+		"feedback": "Not Bad",
+		"status": "active",
+		"departmentId": 6,
+		"department": "Pharmacology Departments",
+		"departments":  [{
+				"id": 1,
+				"name": "Anatomy Department"
+			}, {
+				"id": 2,
+				"name": "Anesthesia Department"
+			}, {
+				"id": 3,
+				"name": "Cardiology Departments"
+			}, {
+				"id": 4,
+				"name": "Cardio-thoracis Surgery Department "
+			}, {
+				"id": 5,
+				"name": "Dental Departments"
+			}, {
+				"id": 6,
+				"name": "Pharmacology Departments"
+			}, {
+				"id": 7,
+				"name": "Endocrinology  Departments"
+			}, {
+				"id": 8,
+				"name": "Ent Departments"
+			}, {
+				"id": 9,
+				"name": "Gastroenterology Departments"
+			}, {
+				"id": 10,
+				"name": "Nephrology  Departments"
+			}
+
+		],
+		"facilitiesId": 3,
+		"facilities": "Radiology/X-ray facility",
+		"facility": [{
+			"id": 1,
+			"name": "Physiotherapy"
+		}, {
+			"id": 2,
+			"name": "Pharmacy"
+		}, {
+			"id": 3,
+			"name": "Radiology/X-ray facility"
+		}],
+		"statusId": 1,
+		"status": "active",
+		"select": [{
+			"id": 1,
+			"name": "active"
+		}, {
+			"id": 2,
+			"name": "inactive"
+		}]
+	}, {
+		"id": 7,
+		"hospital": "Shri Venkateswara Hospitals",
+		"phone": 7776665533,
+		"address": "H.No:1-77,Nizamabad",
+		"feedback": "Not Bad",
+		"status": "active",
+		"departmentId": 7,
+		"department": "Endocrinology  Departments",
+		"departments":  [{
+				"id": 1,
+				"name": "Anatomy Department"
+			}, {
+				"id": 2,
+				"name": "Anesthesia Department"
+			}, {
+				"id": 3,
+				"name": "Cardiology Departments"
+			}, {
+				"id": 4,
+				"name": "Cardio-thoracis Surgery Department "
+			}, {
+				"id": 5,
+				"name": "Dental Departments"
+			}, {
+				"id": 6,
+				"name": "Pharmacology Departments"
+			}, {
+				"id": 7,
+				"name": "Endocrinology  Departments"
+			}, {
+				"id": 8,
+				"name": "Ent Departments"
+			}, {
+				"id": 9,
+				"name": "Gastroenterology Departments"
+			}, {
+				"id": 10,
+				"name": "Nephrology  Departments"
+			}
+
+		],
+		"facilitiesId": 3,
+		"facilities": "Radiology/X-ray facility",
+		"facility": [{
+			"id": 1,
+			"name": "Physiotherapy"
+		}, {
+			"id": 2,
+			"name": "Pharmacy"
+		}, {
+			"id": 3,
+			"name": "Radiology/X-ray facility"
+		}],
+		"statusId": 1,
+		"status": "active",
+		"select": [{
+			"id": 1,
+			"name": "active"
+		}, {
+			"id": 2,
+			"name": "inactive"
+		}]
+	}, {
+		"id": 8,
+		"hospital": "Aswini Hospital",
+		"phone": 7776665533,
+		"address": "H.No:1-77,Nizamabad",
+		"feedback": "Not Bad",
+		"status": "active",
+		"departmentId": 8,
+		"department": "Ent Departments",
+		"departments": [{
+				"id": 1,
+				"name": "Anatomy Department"
+			}, {
+				"id": 2,
+				"name": "Anesthesia Department"
+			}, {
+				"id": 3,
+				"name": "Cardiology Departments"
+			}, {
+				"id": 4,
+				"name": "Cardio-thoracis Surgery Department "
+			}, {
+				"id": 5,
+				"name": "Dental Departments"
+			}, {
+				"id": 6,
+				"name": "Pharmacology Departments"
+			}, {
+				"id": 7,
+				"name": "Endocrinology  Departments"
+			}, {
+				"id": 8,
+				"name": "Ent Departments"
+			}, {
+				"id": 9,
+				"name": "Gastroenterology Departments"
+			}, {
+				"id": 10,
+				"name": "Nephrology  Departments"
+			}
+
+		],
+		"facilitiesId": 3,
+		"facilities": "Radiology/X-ray facility",
+		"facility": [{
+			"id": 1,
+			"name": "Physiotherapy"
+		}, {
+			"id": 2,
+			"name": "Pharmacy"
+		}, {
+			"id": 3,
+			"name": "Radiology/X-ray facility"
+		}],
+		"statusId": 1,
+		"status": "active",
+		"select": [{
+			"id": 1,
+			"name": "active"
+		}, {
+			"id": 2,
+			"name": "inactive"
+		}]
+	}, {
+		"id": 9,
+		"hospital": "Vasavi Eye Hospital",
+		"phone": 7776665533,
+		"address": "H.No:1-77,Nizamabad",
+		"feedback": "Not Bad",
+		"status": "active",
+		"departmentId": 9,
+		"department": "Gastroenterology Departments",
+		"departments": [{
+				"id": 1,
+				"name": "Anatomy Department"
+			}, {
+				"id": 2,
+				"name": "Anesthesia Department"
+			}, {
+				"id": 3,
+				"name": "Cardiology Departments"
+			}, {
+				"id": 4,
+				"name": "Cardio-thoracis Surgery Department "
+			}, {
+				"id": 5,
+				"name": "Dental Departments"
+			}, {
+				"id": 6,
+				"name": "Pharmacology Departments"
+			}, {
+				"id": 7,
+				"name": "Endocrinology  Departments"
+			}, {
+				"id": 8,
+				"name": "Ent Departments"
+			}, {
+				"id": 9,
+				"name": "Gastroenterology Departments"
+			}, {
+				"id": 10,
+				"name": "Nephrology  Departments"
+			}
+
+		],
+		"facilitiesId": 3,
+		"facilities": "Radiology/X-ray facility",
+		"facility": [{
+			"id": 1,
+			"name": "Physiotherapy"
+		}, {
+			"id": 2,
+			"name": "Pharmacy"
+		}, {
+			"id": 3,
+			"name": "Radiology/X-ray facility"
+		}],
+		"statusId": 1,
+		"status": "active",
+		"select": [{
+			"id": 1,
+			"name": "active"
+		}, {
+			"id": 2,
+			"name": "inactive"
+		}]
+	}, {
+		"id": 10,
+		"hospital": "Sujatha Nursing Home",
+		"phone": 7776665533,
+		"address": "H.No:1-77,Nizamabad",
+		"feedback": "Not Bad",
+		"status": "active",
+		"departmentId": 10,
+		"department": "Nephrology  Departments",
+		"departments": [{
+				"id": 1,
+				"name": "Anatomy Department"
+			}, {
+				"id": 2,
+				"name": "Anesthesia Department"
+			}, {
+				"id": 3,
+				"name": "Cardiology Departments"
+			}, {
+				"id": 4,
+				"name": "Cardio-thoracis Surgery Department "
+			}, {
+				"id": 5,
+				"name": "Dental Departments"
+			}, {
+				"id": 6,
+				"name": "Pharmacology Departments"
+			}, {
+				"id": 7,
+				"name": "Endocrinology  Departments"
+			}, {
+				"id": 8,
+				"name": "Ent Departments"
+			}, {
+				"id": 9,
+				"name": "Gastroenterology Departments"
+			}, {
+				"id": 10,
+				"name": "Nephrology  Departments"
+			}
+
+		],
+		"facilitiesId": 3,
+		"facilities": "Radiology/X-ray facility",
+		"facility": [{
+			"id": 1,
+			"name": "Physiotherapy"
+		}, {
+			"id": 2,
+			"name": "Pharmacy"
+		}, {
+			"id": 3,
+			"name": "Radiology/X-ray facility"
+		}],
+		"statusId": 1,
+		"status": "active",
+		"select": [{
+			"id": 1,
+			"name": "active"
+		}, {
+			"id": 2,
+			"name": "inactive"
+		}]
+	}
+
+]

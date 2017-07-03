@@ -1,0 +1,73 @@
+<div class="demo-md-panel-animation md-padding">  
+    
+
+    <md-content layout="column" flex> <md-table-container>
+    <table md-table id="questionTable">
+        <thead md-head md-order="query.order">
+            <tr md-row ng-class-odd="'tableHead'">
+                <th md-column><span> <md-checkbox ng-model="data.checkboxValue"
+                        ng-click="selectAll()" aria-label="Checkbox 2"
+                        ng-true-value="'on'" ng-false-value="'off'"
+                        class="md-warn md-align-top-left" flex></span></th>
+                <th md-column ><span>Registration ID</span></th>
+                <th md-column ><span>Appointment Date</span></th>
+                <th md-column ><span>Doctor </span></th>
+                <th md-column ><span>Patient Name</span></th>
+                 <th md-column ><span>DOB</span></th>
+                <th md-column ><span>Phone</span></th>
+                <th md-column ><span>Hospital</span></th>
+                <th md-column ><span>Time</span></th>
+                <th md-column ><span>Disease</span></th>
+                <th md-column ><span>Email</span></th>
+                <th md-column ><span>Address</span></th> 
+                <th md-column>Actions</th>
+            </tr>
+        </thead>
+        <tbody md-body>
+            <tr md-row ng-class-odd="'odd'" ng-repeat="appointment in appointments">
+                <td md-cell><md-checkbox ng-model="data.checkboxValue"
+                        ng-click="rowSelect(appointment)" aria-label="Checkbox 2"
+                        ng-true-value="'on'" ng-false-value="'off'"
+                        class="md-warn md-align-top-left" flex></td>
+                <td md-cell >{{appointment.registrationId}}</td>
+                 <td md-cell >{{appointment.appointmentDate}}</td>
+                <td md-cell >{{appointment.doctorName}}</td>               
+                <td md-cell >{{appointment.patientName}}</td>
+                 <td md-cell >{{appointment.dob}}</td>
+                  <td md-cell >{{appointment.phoneNumber}}</td>
+                <td md-cell >{{appointment.hospitalName}}</td>
+                <td md-cell >{{appointment.time}}</td>
+                 <td md-cell >{{appointment.diseases}}</td> 
+                  <td md-cell >{{appointment.email}}</td> 
+                   <td md-cell >{{appointment.area}} {{appointment.city}} {{appointment.state}} {{appointment.pincode}}</td> 
+                
+               
+                <td md-cell width="100"><span> <md-tooltip> Update </md-tooltip> <i
+                        class="material-icons" ng-click="setRowData(appointment);toggleRight()"
+                        ng-hide="isOpenRight()">border_color</i></span> <span><md-tooltip>
+                        Delete </md-tooltip> <i class="material-icons" ng-click="deleteRow($event,appointment.id)">delete_forever</i>
+                        </span><span><md-tooltip>
+                        {{appointment.description}} </md-tooltip> <i class="material-icons">description</i>
+                        </span></td>
+
+                
+            </tr>
+        </tbody>
+    </table>
+    </md-table-container> 
+    </md-content>
+    
+
+    <div layout="column" ng-cloak>
+        <section layout="row" flex>
+            <md-sidenav class="md-sidenav-right md-whiteframe-4dp"
+                md-component-id="right"> <md-toolbar
+                class="md-theme-light">
+            <h1 class="md-toolbar-tools">{{pageType}} Appointment</h1>
+            </md-toolbar> 
+            <ng-include src="'pages/app.appointment/app.appointment.record.html'"></ng-include></md-sidenav>
+        </section>
+    </div>
+
+
+</div>

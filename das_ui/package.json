@@ -1,0 +1,42 @@
+{
+  "name": "das",
+  "version": "1.0.0",
+  "description": "Doctor Appointment Tool",
+  "main": "index.js",
+  "author": "Kiran",
+  "license": "ISC",
+  "scripts": {
+    "test": "",
+    "clean": "gulp clean",
+    "connect": "gulp connect",
+    "replace": "gulp replace",
+    "build": "gulp build"
+  },
+  "devDependencies": {
+    "bower": "^1.7.9",
+    "file-system": "^2.2.1",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-connect": "^5.0.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-replace-task": "^0.11.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-yuidoc": "^0.1.2",
+    "istanbul": "^0.4.5",
+    "jasmine": "^2.4.1",
+    "jasmine-core": "^2.4.1",
+    "jshint": "^2.9.3",
+    "karma": "^1.2.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.1",
+    "karma-spec-reporter": "0.0.26",
+    "run-sequence": "^1.2.2",
+    "yargs": "^5.0.0"
+  },
+  "dependencies": {
+    "npm-git-install": "^0.2.0"
+  }
+}

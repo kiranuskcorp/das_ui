@@ -1,0 +1,98 @@
+{
+    "count": 12,
+    "data": [{
+        "userId": 60499910,
+        "username": "Grainne Reilly",
+        "firstname":"Grainne",
+        "lastname":"Reilly",
+        "department": "CADM HUIT Lib Tech Ser; HL PDI Media Preservation",
+        "email": "email,gagandeepreddy@gmail.com, gagandeepreddy@gmail.com, gagandeepreddy@gmail.com, gagandeepreddy@gmail.com"
+    }, {
+        "userId": 60499909,
+        "username": "John B Taylor",
+         "firstname":"John B",
+        "lastname":"Taylor",
+        "department": "department2",
+        "email": "email2",
+        "HUID": "HUID2"
+    }, {
+        "userId": 60499908,
+        "username": "Dave Ackerman",
+         "firstname":"Dave",
+        "lastname":"Ackerman",
+        "department": "HL PDI Media Preservation",
+        "email": "email"
+    }, {
+        "userId": 60499911,
+        "username": "Janet D Taylor",
+         "firstname":"Janet D",
+        "lastname":"Taylor",
+        "department": "department4",
+        "email": "email4",
+        "HUID": "HUID4"
+    }, {
+        "userId": 60499912,
+        "username": "John E Taylor",
+         "firstname":"John E",
+        "lastname":"Taylor",
+        "department": "department5",
+        "email": "email5",
+        "HUID": "HUID5"
+    }, {
+        "userId": 60499913,
+        "username": "John F Taylor",
+         "firstname":"John F",
+        "lastname":"Taylor",
+        "department": "department6",
+        "email": "gagandeepreddy@gmail.com",
+        "HUID": "HUID6"
+    }, {
+        "userId": 60499914,
+        "username": "Janet G Taylor",
+         "firstname":"John G",
+        "lastname":"Taylor",
+        "department": "department10",
+        "email": "email6",
+        "HUID": "HUID7"
+    }, {
+        "userId": 60499915,
+        "username": "John H Tay*lor",
+         "firstname":"John H",
+        "lastname":"Taylor",
+        "department": "department2",
+        "email": "email7",
+        "HUID": "HUID8"
+    }, {
+        "userId": 60499916,
+        "username": "John I Taylor",
+         "firstname":"John I",
+        "lastname":"Taylor",
+        "department": "department3",
+        "email": "email8",
+        "HUID": "HUID9"
+    }, {
+        "userId": 60499917,
+        "username": "Janet J Taylor",
+         "firstname":"John J",
+        "lastname":"Taylor",
+        "department": "department4",
+        "email": "email9",
+        "HUID": "HUID10"
+    }, {
+        "userId": 60499918,
+        "username": "John K Taylor",
+         "firstname":"John K",
+        "lastname":"Taylor",
+        "department": "department5",
+        "email": "email10",
+        "HUID": "HUID11"
+    }, {
+        "userId": 60499919,
+        "username": "John L Taylor",
+         "firstname":"John L",
+        "lastname":"Taylor",
+        "department": "department6",
+        "email": "email11",
+        "HUID": "HUID12"
+    }]
+}

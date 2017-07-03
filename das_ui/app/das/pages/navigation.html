@@ -1,0 +1,23 @@
+<section layout="row" flex>
+      <md-sidenav class="md-sidenav-left md-whiteframe-4dp"
+        md-component-id="left"> <md-toolbar
+        class="md-theme-light">
+      <div layout="row" layout-xs="column" layout-sm="column" layout-margin>
+    <div flex="80">DAS</div>  
+    <i class="material-icons cursor" data-ng-click="toggleNavigationLeft()" >clear</i>  
+       <i class="material-icons cursor" ui-sref="app.specialization" data-ng-click="toggleNavigationLeft()">home</i>
+         </div>  
+      </md-toolbar> 
+       <div ng-repeat="tab in leftTabs" >
+        <div class="primaryNavItem"> 
+
+       <a ui-sref="{{tab.route}}" ng-model="selected" ng-click="toggleNavigationLeft()" ng-class="{'selectedNavItem': clicked}">{{tab.value}}</a>
+      </div>
+       </div> 
+
+       </md-sidenav>
+
+
+    </section>
+
+

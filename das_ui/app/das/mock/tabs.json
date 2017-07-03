@@ -1,0 +1,32 @@
+[  
+   {  
+      "key":"user",
+      "value":"User",
+      "route":"app.user"
+   },
+   {  
+      "key":"department",
+      "value":"Department",
+      "route":"app.department"
+   },
+   {  
+      "key":"specialization",
+      "value":"Specialization",
+      "route":"app.specialization"
+   },
+   {  
+      "key":"hospital",
+      "value":"Hospital",
+      "route":"app.hospital"
+   },
+   {  
+      "key":"doctor",
+      "value":"Doctor",
+      "route":"app.doctor"
+   },
+   {  
+      "key":"appointment",
+      "value":"Appointment",
+      "route":"app.appointment"
+   }
+]

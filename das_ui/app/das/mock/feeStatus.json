@@ -1,0 +1,10 @@
+[
+
+{"key":"inProgress","value":"In Progress"},
+{"key":"pending","value":"Pending"},
+{"key":"cleared","value":"Cleared"},
+{"key":"rejected","value":"Rejected"},
+{"key":"cancelled","value":"Cancelled"},
+{"key":"closed","value":"Closed"},
+{"key":"notStarted","value":"Not Started"}
+]

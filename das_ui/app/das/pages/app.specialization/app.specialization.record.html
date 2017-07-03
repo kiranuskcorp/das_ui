@@ -1,0 +1,28 @@
+<md-content layout-padding>
+<form name="specializationCreateForm">
+	<md-input-container class="md-block"> <label>Name</label>
+	<input  name="name" ng-model="record.specializationName" required> </md-input-container>
+	
+    <md-input-container class="md-block" flex-gt-sm> <label>Department
+    </label> <md-select ng-model="record.departmentId" required> <md-option
+        ng-repeat="department in departments" ng-value="department.id"
+        ng-selected="department.id === record.departmentId">{{
+    department.departmentName}}</md-option> </md-select> </md-input-container>
+
+    <md-input-container class="md-block"> <label>Description</label>
+	<textarea name="description" ng-model="record.description"></textarea> </md-input-container>
+
+	
+	<md-input-container class="md-block"> <input
+		type="hidden" name="Id" ng-model="record.id"> </md-input-container>
+	
+	</md-input-container>
+
+	<md-button class="md-raised md-primary" ng-click="saveRecord()"
+		ng-hide="updatePage" ng-disabled="specializationCreateForm.$invalid"> Save </md-button>
+	<md-button class="md-raised md-primary" ng-click="updateData()"
+		ng-show="updatePage" ng-disabled="specializationCreateForm.$invalid">Update </md-button>
+	<md-button class="md-raised" ng-click="cancelRecord()" >
+	Cancel </md-button>
+</form>
+</md-content>

@@ -1,0 +1,81 @@
+<md-content layout-padding>
+<form name="hospitalCreateForm">
+	<md-input-container class="md-block" flex-gt-sm> <label>Hospital Name</label>
+	<input  name="name" ng-model="record.name"  ></md-input-container>
+
+	<md-input-container class="md-block" flex-gt-sm> <label>Available Facilities
+		</label> <md-select ng-model="record.availableFacilities" > <md-option
+		ng-repeat="facility in facilities" ng-value="facility.name"
+		ng-selected="facility.name === record.availableFacilities">{{
+	facility.name }}</md-option> </md-select> </md-input-container>
+	
+	<md-input-container class="md-block" flex-gt-sm> <label>Department Name
+		</label> <md-select ng-model="record.departmentId" required> <md-option
+		ng-repeat="department in departments" ng-value="department.id"
+		ng-selected="department.id === record.departmentId">{{
+	 department.departmentName}}</md-option> </md-select> </md-input-container>
+	 
+	<!-- <md-input-container class="md-block" flex-gt-sm> <label>Department Name
+		</label> <md-select ng-model="record.departmentName" > <md-option
+		ng-repeat="department in departments" ng-value="department.id"
+		ng-selected="department.id === record.departmentName">{{
+	department.departmentName}}</md-option> </md-select> </md-input-container> -->
+
+<md-input-container class="md-block" flex-gt-sm> <label>Hospital Registration Number</label>
+	<input  name="Alternate Phone" ng-model="record.hospitalRegistrationNumber"  only-digits> </md-input-container>
+
+	<md-input-container class="md-block" flex-gt-sm> <label>Hospital Estd.</label>
+	<input  name="Established" ng-model="record.hospitalEstablishmentDate" type="date" > </md-input-container>
+
+	<md-input-container class="md-block" flex-gt-sm> <label>Phone</label>
+	<input  name="license" ng-model="record.contact"  > </md-input-container>
+
+	<md-input-container class="md-block" flex-gt-sm> <label>Start Time
+		</label> <md-select ng-model="record.startTime" > <md-option
+		ng-repeat="time in times" ng-value="time.value"
+		ng-selected="time.value === record.startTime">{{
+		time.value }}</md-option> </md-select> </md-input-container>
+
+	<md-input-container class="md-block" flex-gt-sm> <label>End Time
+		</label> <md-select ng-model="record.endTime" > <md-option
+		ng-repeat="time in times" ng-value="time.value"
+		ng-selected="time.value === record.endTime">{{
+		time.value }}</md-option> </md-select> </md-input-container>	
+
+
+	<div>
+		<fieldset>
+		<legend>Address</legend>
+
+		<md-input-container class="md-block" flex-gt-sm> <label>State
+		</label> <md-select ng-model="record.state" ng-change="getCitiesByState(state.key)" > <md-option
+		ng-repeat="state in states" ng-value="state.value"
+		ng-selected="state.value === record.state">{{
+		state.value }}</md-option> </md-select> </md-input-container>
+		
+		<md-input-container class="md-block" flex-gt-sm> <label>District
+		</label> <md-select ng-model="record.district" > <md-option
+		ng-repeat="district in cities" ng-value="district.value"
+		ng-selected="district.value === record.district">{{
+		district.value }}</md-option> </md-select> </md-input-container>
+
+	<md-input-container class="md-block" flex-gt-sm> <label>Area</label>
+	<input  name="area" ng-model="record.area" type="textBox" > </md-input-container>
+		</fieldset>
+	</div>
+	
+	<md-input-container class="md-block"> <label>Description
+		</label> <textarea name="description" ng-model="record.description"></textarea></md-input-container>	
+
+	<md-button class="md-raised md-primary" ng-click="saveRecord()"
+		ng-hide="updatePage"  ng-disabled="hospitalCreateForm.$invalid"> Save </md-button>
+	<md-button class="md-raised md-primary" ng-click="updateRecord()"
+		ng-show="updatePage"   ng-disabled="hospitalCreateForm.$invalid"> Update </md-button>
+	<md-button class="md-raised" ng-click="cancelRecord()">
+	Cancel </md-button>
+</form>
+
+</md-content>
+
+
+

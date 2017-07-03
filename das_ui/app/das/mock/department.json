@@ -1,0 +1,16 @@
+[{"id": 1,"department": "Anatomy Department "},
+ {"id": 2,"department": "Anesthesia department"},
+ {"id": 3,"department": "Cardiology Departments"},
+ {"id": 4,"department": "Cardio-thoracis Surgery Department "},
+ {"id": 5,"department": "Dental Departments "},
+ {"id": 6,"department": "Cardiology Departments"},
+ {"id": 7,"department": "Endocrinology  Departments"},
+ {"id": 8,"department": "Ent Departments"},
+ {"id": 9,"department": "Gastroenterology Departments"},
+ {"id": 10,"department": "Nephrology  Departments"},
+ {"id": 11,"department": "Neurology Departments"},
+ {"id": 12,"department": "Pharmacology Departments"},
+ {"id": 13,"department": "Physiology  Departments"},
+ {"id":14,"department": "Radiology Departments"},
+ {"id": 15,"department": "Urology Departments"}
+]

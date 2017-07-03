@@ -1,0 +1,32 @@
+[
+  {
+    "id": "09:00",
+    "value": "09:00",
+    "availability":true
+  },
+  {
+    "id": "09:05",
+    "value": "09:05",
+     "availability":false
+  },
+  {
+    "id": "09:10",
+    "value": "09:10",
+    "availability":false
+  },
+  {
+    "id": "09:15",
+    "value": "09:15",
+     "availability":false
+  },
+  {
+    "id": "09:20",
+    "value": "09:20",
+    "availability":true
+  },
+  {
+    "id": "09:25",
+    "value": "09:25",
+     "availability":false
+  }
+]

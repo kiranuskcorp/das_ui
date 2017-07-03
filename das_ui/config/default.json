@@ -1,0 +1,4 @@
+{
+    "baseUrl": "policy2.admin.base.url.dev",
+    "sessionWarnBefore": "policy2 - admin.session.warn.before.timeout.dev"
+}
