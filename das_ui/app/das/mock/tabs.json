@@ -28,5 +28,11 @@
       "key":"appointment",
       "value":"Appointment",
       "route":"app.appointment"
+   },
+   {  
+      "key":"reporting",
+      "value":"Reporting",
+      "route":"app.reporting"
    }
+
 ]
