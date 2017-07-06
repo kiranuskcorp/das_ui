@@ -51,6 +51,9 @@ function leftNavController($scope, leftNavService, Excel, $state, $mdDialog,
              case 'Doctor':
             $rootScope.$emit("CallDoctorMethod", {});
             break;
+             case 'Reporting':
+            $rootScope.$emit("CallReportingMethod", {});
+            break;
           }
      };
 
