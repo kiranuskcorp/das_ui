@@ -65,14 +65,14 @@ function userController($scope, userService, $mdDialog,$rootScope, $mdToast,
                     $scope.loading=false;
         });
 
-
+/*
             $scope.validatePassword = function(pswd){
                 if($scope.record.confirmPassword === pswd){
                     $scope.validatePswd = true;
                 }else{
                      $scope.validatePswd = false;
                 }
-            }
+            }*/
         
          
         var deregisterListener = $rootScope.$on("CallUserMethod", function(){
@@ -116,7 +116,6 @@ function userController($scope, userService, $mdDialog,$rootScope, $mdToast,
                         "gender": row.gender,
                         "address": row.address,
                         "password":row.password,
-                         "confirmPassword":row.confirmPassword,
                         "role": row.role,
                         "description": row.description,
                              "id":row.id
@@ -141,9 +140,8 @@ function userController($scope, userService, $mdDialog,$rootScope, $mdToast,
                             "dob": "",
                             "gender": "",
                             "address": "",
-                            "role":"",
                             "password":"",
-                            "confirmPassword":"",
+                            "role":"",
                             "description": ""
                 };
                 };
