@@ -34,7 +34,7 @@ table.md-table > tbody > tr > td:nth-child(2) {
     padding-left: 5em;
 }
 .odd{
-    background-color: lightgrey;
+    background-color: #2EB5A3;
 }
 .tableHead{
     background-color: #393a3d

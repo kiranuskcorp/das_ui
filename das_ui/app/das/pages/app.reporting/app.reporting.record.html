@@ -1,0 +1,24 @@
+<md-content layout-padding>
+<form name="reportingCreateForm">
+	<md-input-container class="md-block" flex-gt-sm> <label>Doctor
+		Name</label> <md-select ng-model="record.doctorId" required
+		ng-change="getAllHospitalsByDoctorId(record.doctorId)"> <md-option
+		ng-repeat="doctor in doctors" ng-value="doctor.id"
+		ng-selected="doctor.id === record.doctorId">{{ doctor.name
+	}}</md-option> </md-select> </md-input-container>
+	<md-input-container class="md-block"> <label>From
+		Date</label> <input name="dob" ng-model="record.fromDate"  type="Date"
+		max="{{currentDate | date: 'yyyy-MM-dd'}}"> </md-input-container>
+	<md-input-container class="md-block"> <label>To
+		Date</label> <input name="dob" ng-model="record.toDate"  type="Date"
+		max="{{currentDate | date: 'yyyy-MM-dd'}}"> </md-input-container>
+	<md-button class="md-raised md-primary" ng-click="saveRecord()"
+		ng-hide="updatePage" ng-disabled="reportingCreateForm.$invalid">
+	Search </md-button>
+	<md-button class="md-raised md-primary" ng-click="updateRecord()"
+		ng-show="updatePage" ng-disabled="reportingCreateForm.$invalid">
+	Update </md-button>
+	<md-button class="md-raised " ng-click="cancelRecord()">
+	Cancel </md-button>
+</form>
+</md-content>

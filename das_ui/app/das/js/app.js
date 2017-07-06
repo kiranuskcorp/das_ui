@@ -157,7 +157,19 @@
                             }
                         }
                     });
-                    
+                      $stateProvider
+                    .state('app.reporting', {
+                        name: "reporting",
+                        url: "/reporting",
+                        views: {
+
+                            "content@": {
+                                controller: "reportingController",
+                                controllerAs: 'self',
+                                templateUrl: "pages/app.reporting/app.reporting.html"
+                            }
+                        }
+                    });
                     $stateProvider
                     .state('app.specialization', {
                         name: "specialization",

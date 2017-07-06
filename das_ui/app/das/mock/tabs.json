@@ -26,7 +26,7 @@
       "value":"Department",
       "route":"app.department"
    },
-{  
+  {  
       "key":"specialization",
       "value":"Specialization",
       "route":"app.specialization"
@@ -43,10 +43,21 @@
       "route":"app.diseases"
    },
 
+
     {  
       "key":"login",
       "value":"Login",
       "route":"app.login"
-   }
 
+   {  
+      "key":"appointment",
+      "value":"Appointment",
+      "route":"app.appointment"
+   },
+ {
+      "key":"reporting",
+      "value":"Reporting",
+      "route":"app.reporting"
+
+   }
 ]
