@@ -3,8 +3,8 @@
 	<md-input-container class="md-block"> <label>Name</label>
 	<input  name="name" ng-model="record.name" required> </md-input-container>
 
-	<md-input-container class="md-block"> <label>Email</label>
-	<input  name="email" ng-model="record.email" required> </md-input-container>
+	<md-input-container class="md-block" flex-gt-sm> <label>Email</label>
+	<input  name="email" ng-model="record.email" type="email" required> </md-input-container>
 
 	<md-input-container class="md-block"> <label>Phone</label>
 	<input  name="phone" ng-model="record.phone" required> </md-input-container>
@@ -12,13 +12,13 @@
 	<md-input-container class="md-block"> <label>Alternate Phone</label>
 	<input  name="alternatePhone" ng-model="record.alternatePhone"> </md-input-container>
 
-	<md-input-container class="md-block"> <label>Password</label>
-	<input  name="password" ng-model="record.password"  type="password" required="required"> </md-input-container>
+	<!-- <md-input-container class="md-block"> <label>Password</label>
+	<input  name="password" ng-model="record.password"  type="password" required="required"> </md-input-container> -->
 
-	<md-input-container class="md-block"> <label>Confirm Password</label>
+	<!-- <md-input-container class="md-block"> <label>Confirm Password</label>
 	<input  name="confirmPassword" ng-model="record.confirmPassword" type="password" ng-keyup="validatePassword(record.password)" required="required"> </md-input-container>
 
-	<span style="color:red" ng-if="validatePswd == false">Confirm with Password</span>
+	<span style="color:red" ng-if="validatePswd == false">Confirm with Password</span> -->
 
 	<md-input-container class="md-block"> <label>Date of Birth</label>
 	<input  name="dob" ng-model="record.dob" required type="Date" max="{{currentDate | date: 'yyyy-MM-dd'}}"> </md-input-container>
