@@ -1,8 +1,6 @@
 <div class="demo-md-panel-animation md-padding">
-	<div layout="row" layout-xs="column" layout-sm="column" layout-margin>
-			
+	<div layout="row" layout-xs="column" layout-sm="column" layout-margin>		
 	</div>
-	
 	<md-content layout="column" flex> <md-table-container>
 	<table md-table id="userTable">
 		<thead md-head md-order="query.order">
@@ -11,22 +9,18 @@
 				 aria-label="Checkbox 2"
 						ng-true-value="'on'" ng-false-value="'off'"
 						class="md-warn md-align-top-left" flex></span></th>
-
 							<th md-column><span>Name</span></th>
 							<th md-column><span>Email</span></th>
+							<th md-column><span>Password</span></th>
 							<th md-column><span>Phone Number</span></th>
 							<th md-column><span>Alternate Phone</span></th>
 							<th md-column><span>Date Of Birth</span></th>
 							<th md-column><span>Gender</span></th>
 							<th md-column><span>Address</span></th>
 							<th md-column><span>Role</span></th>
-							
 				<th md-column>Actions 
-
 				<md-menu class=" headerMore cursor">
-               
                   <i class="material-icons white" ng-click=""></i>
-             
               		 <md-menu-content width="3">
                  		 <md-menu-item ng-repeat="header in headers">
                   		   <md-button ng-click="menuItemClick($index,header.key)">
@@ -51,14 +45,13 @@
 						class="md-warn md-align-top-left" flex></td>
 						<td md-cell>{{data.name}}</td>
 				<td md-cell>{{data.email}}</td>
+				<td md-cell>{{data.password}}</td>
 				<td md-cell>{{data.phone}}</td>
 				<td md-cell>{{data.alternatePhone}}</td>
 				<td md-cell>{{data.dob}}</td>
 				<td md-cell>{{data.gender}}</td>
 				<td md-cell>{{data.address}}</td> 
 				<td md-cell>{{data.role}}</td> 
-				
-	
 				<td md-cell><span> <md-tooltip> Update </md-tooltip> <i
 						class="material-icons" ng-click="setRowData(data);toggleRight()"
 						ng-hide="isOpenRight()">border_color</i></span><span><md-tooltip>
@@ -69,7 +62,6 @@
 	</table>
 	</md-table-container>
 	</md-content>
-
 	<div layout="column" ng-cloak>
 		<section layout="row" flex>
 			<md-sidenav class="md-sidenav-right md-whiteframe-4dp"
