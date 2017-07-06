@@ -228,6 +228,24 @@ table.md-table tbody.md-body>tr.md-row, table.md-table tfoot.md-foot>tr.md-row {
      font-family: "Avenir Next forINTUIT", "Arial", -apple-system, "Helvetica Neue", sans-serif;
      font-weight: 600;
 }
+
+.md-sidenav {
+    box-sizing: border-box;
+    position: absolute;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    /*z-index: 100;*/
+    width: 350px;
+    max-width: 600px;
+    bottom: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-left: 700px;
+    margin-bottom: 450px;
+}
+
 .md-sidenav-custom{
         box-sizing: border-box;
     position: absolute;

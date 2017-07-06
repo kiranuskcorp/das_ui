@@ -1,0 +1,40 @@
+<div class="container">
+		<div class="row" style="margin-top:50px;">
+			<div class="col-md-offset-2 col-md-4" style="border: 2px solid green;"
+				ng-show="showLogin">
+				<h2 class="text-center">Login Form</h2>
+				<form class="form-horizontal" ng-submit="login()">
+					<fieldset>
+
+						<div class="control-group">
+							<label class="control-label" for="email">User Name:</label>
+							<div class="controls">
+								<input id="loginEmail" name="email" ng-model="user.username"
+									class="form-control" type="text" placeholder="Username"
+									class="input-large" required="">
+							</div>
+						</div>
+
+						<!-- Password input-->
+						<div class="control-group">
+							<label class="control-label" for="password">Password:</label>
+							<div class="controls">
+								<input required="" id="loginPassword" ng-model="user.password"
+									name="password" class="form-control" type="password"
+									placeholder="********" class="input-medium">
+							</div>
+						</div>
+
+						<!-- Button -->
+						<div class="control-group">
+							<label class="control-label" for="signin"></label>
+							<div class="controls">
+								<input type="submit" id="submit" class="btn btn-success"
+									value="Sign In" />
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>

@@ -1,10 +1,8 @@
 <div class="demo-md-panel-animation md-padding">
 	<div layout="row" layout-xs="column" layout-sm="column" layout-margin>
-			
 	</div>
-	
 	<md-content layout="column" flex> <md-table-container>
-	<table md-table id="specializationTable">
+	<table md-table id="roleTable">
 		<thead md-head md-order="query.order">
 			<tr md-row ng-class-odd="'tableHead'">
 				<th md-column><span> <md-checkbox ng-click="selectAll()" ng-model="data.checkboxValue"
@@ -12,24 +10,8 @@
 						ng-true-value="'on'" ng-false-value="'off'"
 						class="md-warn md-align-top-left" flex></span></th>
 				<th md-column><span>Name</span></th>
-				<!-- <th md-column><span>Created Date</span></th>
-				<th md-column><span>Updated Date</span></th>
-				 -->
-				 <th md-column><span>Department</span></th>
 				 <th md-column><span>Description</span></th>
-
-				<!-- <th md-column ng-show="headerEnable.alternatePhone"><span>Alternate Phone</span></th> 
-				<th md-column ng-show="client"><span>Client</span></th>
-				<th md-column ng-show="headerEnable.skypeId" ><span>Skype Id</span></th> 
-				 <th md-column ng-show="headerEnable.timezone" ><span>Time Zone</span></th> 
-				<th md-column ng-show="batch" ><span>Batch</span></th>
-				<th md-column><span>Technology</span></th>
-				<th md-column><span>Invoice</span></th>
-				<th md-column class="center"><span>Paid Status</span></th>
-				<th md-column class="center"><span>Received Status</span></th>
-				<th md-column class="center" ng-show="status"><span>Status</span></th>-->
 				<th md-column>Actions 
-
 				<md-menu class=" headerMore cursor">
                    <i class="material-icons white" ng-click=""></i>
               		 <md-menu-content width="3">
@@ -49,27 +31,13 @@
 		</thead>
 		<tbody md-body>
 			<tr md-row ng-class-odd="'odd'"
-				ng-repeat="data in specializationData | orderBy: query.order | filter: filterByText | limitTo: query.limit : (query.page -1) * query.limit track by $index">
+				ng-repeat="data in roleData | orderBy: query.order | filter: filterByText | limitTo: query.limit : (query.page -1) * query.limit track by $index">
 				<td md-cell><md-checkbox ng-model="data.checkboxValue"
 						ng-click="rowSelect(data)" aria-label="Checkbox 2"
 						ng-true-value="'on'" ng-false-value="'off'"
 						class="md-warn md-align-top-left" flex></td>
-				<td md-cell>{{data.specializationName}}</td>
-				<!-- <td md-cell>{{data.createdDate}}</td>
-				<td md-cell>{{data.updatedDate}}</td> -->
-				<td md-cell>{{data.departmentName}}</td>
+				<td md-cell>{{data.roleName}}</td>
 				<td md-cell>{{data.description}}</td>
-			<!-- 	<td md-cell ng-show="headerEnable.alternatePhone">{{data.altenatePhone}}</td> 
-				<td md-cell ng-show="client">{{data.clientName}}</td>
-				<td md-cell ng-show="headerEnable.skypeId">{{data.skypeId}}</td>
-				<td md-cell  ng-show="headerEnable.timezone">{{data.timezone}}</td> 
-				<td md-cell  ng-show="batch">{{data.batchId}}</td>
-				<td md-cell>{{data.technologyName}}</td>
-				<td md-cell>{{data.invoice}}</td>
-				<td md-cell>{{data.paidStatus}}</td>
-				<td md-cell>{{data.receivedStatus}}</td> -->
-
-		
 				<td md-cell><span> <md-tooltip> Update </md-tooltip> <i
 						class="material-icons" ng-click="setRowData(data);toggleRight()"
 						ng-hide="isOpenRight()">border_color</i></span><span><md-tooltip>
@@ -79,7 +47,6 @@
 	</table>
 	</md-table-container>
 	</md-content>
-
 	<div layout="column" ng-cloak>
 		<section layout="row" flex>
 			<md-sidenav class="md-sidenav md-whiteframe-4dp"

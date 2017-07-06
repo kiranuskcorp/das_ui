@@ -124,24 +124,23 @@ function specializationController($scope, specializationService, $mdDialog,$root
                     $scope.selected.push(row.id);
                 };
 
-            $scope.headerCheckbox = false;
-                  $scope.selectAll = function() {
+          $scope.headerCheckbox = false;
+        $scope.selectAll = function() {
             if(!$scope.headerCheckbox){
-            for ( var i in $scope.specializationsData) {
-                $scope.specializationsData[i]["checkboxValue"] = 'on';
-                $scope.selected.push($scope.specializationsData[i]);
+            for ( var i in $scope.specializationData) {
+                $scope.specializationData[i]["checkboxValue"] = 'on';
+                $scope.selected.push($scope.specializationData[i]);
             };
             $scope.headerCheckbox = ($scope.headerCheckbox == false)?true:false;
         }else if($scope.headerCheckbox){
-            for ( var i in $scope.specializationsData) {
-                $scope.specializationsData[i]["checkboxValue"] = 'off';
+            for ( var i in $scope.specializationData) {
+                $scope.specializationData[i]["checkboxValue"] = 'off';
                 $scope.selected = [];
             };
             $scope.headerCheckbox = ($scope.headerCheckbox == true)?false:true;
         };
-    };
-
-            
+        //console.log($scope.selected);
+        };
 
             $scope.deleteRow = function(ev,row) {
             

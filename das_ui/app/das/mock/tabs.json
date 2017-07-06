@@ -4,29 +4,49 @@
       "value":"User",
       "route":"app.user"
    },
-   {  
-      "key":"department",
-      "value":"Department",
-      "route":"app.department"
-   },
-   {  
-      "key":"specialization",
-      "value":"Specialization",
-      "route":"app.specialization"
-   },
-   {  
-      "key":"hospital",
-      "value":"Hospital",
-      "route":"app.hospital"
-   },
+  
+   
    {  
       "key":"doctor",
       "value":"Doctor",
       "route":"app.doctor"
    },
+    {  
+      "key":"hospital",
+      "value":"Hospital",
+      "route":"app.hospital"
+   },
    {  
       "key":"appointment",
       "value":"Appointment",
       "route":"app.appointment"
+   },
+    {  
+      "key":"department",
+      "value":"Department",
+      "route":"app.department"
+   },
+{  
+      "key":"specialization",
+      "value":"Specialization",
+      "route":"app.specialization"
+   },
+  
+   {  
+      "key":"role",
+      "value":"Role",
+      "route":"app.role"
+   },
+   {  
+      "key":"diseases",
+      "value":"Diseases",
+      "route":"app.diseases"
+   },
+
+    {  
+      "key":"login",
+      "value":"Login",
+      "route":"app.login"
    }
+
 ]
