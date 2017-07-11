@@ -39,8 +39,7 @@
 	<md-input-container class="md-block" flex-gt-sm> <label>Gender
  </label> <md-select ng-model="record.gender" required> <md-option
         ng-repeat="gender in genders" ng-value="gender.value"
-        ng-selected="gender.id === record.gender">{{
-    gender.value }}</md-option> </md-select> </md-input-container>
+        ng-selected="gender.id === record.gender">{{gender.value}}</md-option> </md-select> </md-input-container>
     
 	<md-input-container class="md-block" flex-gt-sm> <label>Rating</label>
 	<input  name="rating" ng-model="record.rating" type="text" required> </md-input-container>
