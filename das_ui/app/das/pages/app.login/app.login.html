@@ -1,40 +1,32 @@
 <div class="container">
-		<div class="row" style="margin-top:50px;">
+    <div class="row" style="margin-top:50px;">
 			<div class="col-md-offset-2 col-md-4" style="border: 2px solid green;"
 				ng-show="showLogin">
-				<h2 class="text-center">Login Form</h2>
-				<form class="form-horizontal" ng-submit="login()">
-					<fieldset>
-
-						<div class="control-group">
-							<label class="control-label" for="email">User Name:</label>
-							<div class="controls">
-								<input id="loginEmail" name="email" ng-model="user.username"
-									class="form-control" type="text" placeholder="Username"
-									class="input-large" required="">
-							</div>
-						</div>
-
-						<!-- Password input-->
-						<div class="control-group">
-							<label class="control-label" for="password">Password:</label>
-							<div class="controls">
-								<input required="" id="loginPassword" ng-model="user.password"
-									name="password" class="form-control" type="password"
-									placeholder="********" class="input-medium">
-							</div>
-						</div>
-
-						<!-- Button -->
-						<div class="control-group">
-							<label class="control-label" for="signin"></label>
-							<div class="controls">
-								<input type="submit" id="submit" class="btn btn-success"
-									value="Sign In" />
-							</div>
-						</div>
-					</fieldset>
-				</form>
+				<h2 class="text-center" align="center">Welcome to Doctor Appointment System</h2>
+				<h3 align="center"> Login Form </h3>
+	<form class="form-horizontal" ng-submit="login()">
+					
+			<div class="group">
+ 				   <input type="text" ng-model="user.username" placeholder="Username" required=""><span class="highlight"></span><span class="bar"></span>
+  					 
+  				</div>
+  			<div class="group">
+  				  <input type="password" ng-model="user.password" placeholder="Password" required=""><span class="highlight"></span><span class="bar"></span>
+  					  <label></label>
+  			</div>
+		<!-- Button -->
+			<div class="control-group" align="center">
+				<label class="control-label" for="signin"></label>
+				<div class="controls">
+				<md-button type="submit" id="submit" class="btn btn-success"
+									value="Sign In">Sign in
+				</md-button> 
+				</div>
 			</div>
+	
+	</form>
 		</div>
 	</div>
+</div>
+
+<!-- <footer><p><a href="http://www.uskcorp.in/" target="_blank">USK CORP</a></p></footer> -->

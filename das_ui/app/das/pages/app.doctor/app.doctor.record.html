@@ -11,6 +11,9 @@
 	<input  name="Alternate Phone" ng-model="record.alternatePhone" required only-digits> </md-input-container>
 	<md-input-container class="md-block" flex-gt-sm> <label>Department Name</label> 
 	<md-select ng-model="record.departmentId" required 
+
+	<md-input-container class="md-block" flex-gt-sm> <label>Department Name
+		</label> <md-select ng-model="record.departmentId" required 
 		ng-change="getAllSpecializationsByDepartmentId(record.departmentId)"> <md-option
 		ng-repeat="department in departments" ng-value="department.id"
 		ng-selected="department.id === record.departmentId">{{
@@ -28,6 +31,11 @@
 
 <md-input-container class="md-block"> <label>Date of Birth</label>
 	<input  name="dob" ng-model="record.dob" required type="Date" max="{{currentDate | date: 'yyyy-MM-dd'}}"> </md-input-container>
+
+
+<md-input-container class="md-block"> <label>Date of Birth</label>
+	<input  name="dob" ng-model="record.dob" required type="Date" max="{{currentDate | date: 'yyyy-MM-dd'}}"> </md-input-container>
+
 
 	<md-input-container class="md-block" flex-gt-sm> <label>Gender
  </label> <md-select ng-model="record.gender" required> <md-option

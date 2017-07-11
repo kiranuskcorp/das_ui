@@ -1,10 +1,10 @@
 [  
-   {  
-      "key":"user",
-      "value":"User",
-      "route":"app.user"
+   
+   {
+      "key":"appointment",
+      "value":"Appointment",
+      "route":"app.appointment"
    },
-  
    
    {  
       "key":"doctor",
@@ -16,6 +16,7 @@
       "value":"Hospital",
       "route":"app.hospital"
    },
+  
     {  
       "key":"department",
       "value":"Department",
@@ -50,10 +51,17 @@
       "value":"Appointment",
       "route":"app.appointment"
    },
+  
  {
       "key":"reporting",
       "value":"Reporting",
       "route":"app.reporting"
 
-   }
+   },
+
+   {  
+      "key":"user",
+      "value":"User",
+      "route":"app.user"
+   }  
 ]

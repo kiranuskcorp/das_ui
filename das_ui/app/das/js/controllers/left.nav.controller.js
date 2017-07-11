@@ -30,7 +30,45 @@ function leftNavController($scope, leftNavService, Excel, $state, $mdDialog,
     });
     $scope.filter = $rootScope.filterTable;
     $rootScope.currentTableLength;
-    
+    $scope.searchRecord = function(text) {
+         $rootScope.filterTable = $scope.text;
+        switch ($rootScope.currentController) {
+            
+            case 'Specialization':
+                $rootScope.$emit("CallSpecializationSearchMethod", {
+                    text: text
+                });
+                break;
+           
+            case 'Department':
+                $rootScope.$emit("CallDepartmentSearchMethod", {
+                    text: text
+                });
+                break;
+                case 'User':
+                $rootScope.$emit("CallUserSearchMethod", {
+                    text: text
+                });
+                break;
+              case 'Appointment':
+                $rootScope.$emit("CallAppointmentSearchMethod", {
+                    text: text
+                });
+                break;
+            
+            case 'Hospital':
+                $rootScope.$emit("CallHospitalSearchMethod", {
+                    text: text
+                });
+                break;
+
+                case 'Doctor':
+                $rootScope.$emit("CallDoctorSearchMethod", {
+                    text: text
+                });
+                break;   
+        }
+    }
     $scope.addRecord = function() {
         switch($rootScope.currentController){
             case 'Specialization':
@@ -51,7 +89,6 @@ function leftNavController($scope, leftNavService, Excel, $state, $mdDialog,
              case 'Doctor':
             $rootScope.$emit("CallDoctorMethod", {});
             break;
-
              case 'Role':
             $rootScope.$emit("CallRoleMethod", {});
             break;
