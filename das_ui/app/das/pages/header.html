@@ -2,11 +2,12 @@
    <header class="global-header-view">
       <nav role="navigation">
          <div class="navigation-canvas">
+         
             <div>
                <div class="global-header-left">
                   <!-- <p ng-click="clicked()">click</p> -->
                   <div>
-                     <div class="global-header-item-container" data-ng-click="toggleNavigationLeft()" data-id="leftNode"><span class="global-header-left global-header-item"><button class="global-header-item-button collapse-trigger"><i class="material-icons white">view_headline</i><label style="display: inline;"><span class="label company-name text-relative-top" data-id="labelNode">Doctor Appointment System</span></label></button></span></div>
+                     <div class="global-header-item-container" data-ng-click="toggleNavigationLeft()" data-id="leftNode"><span class="global-header-left global-header-item"><button class="global-header-item-button collapse-trigger"><i class="material-icons white">view_headline</i><span class="label company-name text-relative-top" data-id="labelNode">&nbsp; &nbsp; &nbsp; &nbsp;Doctor Appointment System</span></button></span></div>
                   </div>
                </div>
                <div class="global-header-toast" style="display: none;">
@@ -35,7 +36,10 @@
                               <div class="flyout-tip"></div>
                            </button>
                         </span>
-                        <span class="global-header-item create" data-id="shell/global-header/create" style="border-left: none !important;">
+
+
+
+                     <!--    <span class="global-header-item create" data-id="shell/global-header/create" style="border-left: none !important;">
                            <button class="global-header-item-button icon-relative-top" data-id="buttonNode" aria-haspopup="true" aria-label="Create">
                               <i class="material-icons white ">import_export</i>
                               <span class="label" data-id="labelNode"></span>
@@ -48,7 +52,7 @@
                               <span class="label" data-id="labelNode"></span>
                               <div class="flyout-tip"></div>
                            </button>
-                        </span>
+                        </span> -->
                         <span class="global-header-item search" data-id="shell/global-header/search" accesskey="f" style="border-left: none !important;">
                            <button class="global-header-item-button icon-relative-top" data-id="buttonNode" aria-haspopup="true" aria-label="Search Transactions">
                               <i class="material-icons white"  ng-mouseenter="hoverIn()">search</i>
@@ -56,6 +60,8 @@
                               <div class="flyout-tip"></div>
                            </button>
                         </span>
+
+
                         <span class="global-header-item settings" data-id="shell/global-header/settings" style="border-left: none !important;">
                            <button class="global-header-item-button" data-id="buttonNode" aria-haspopup="true" aria-label="Settings">
                               <i data-id="iconNode" class="hi hi-settings-o"></i>
@@ -70,6 +76,10 @@
                               <div class="flyout-tip"></div>
                            </button>
                         </span>
+                        <md-button><a href="" style="color: white" ng-click="logout()" target="_self">Log Out</a></md-button>
+                    
+
+
                      </div>
                   </div>
                </div>

@@ -184,7 +184,8 @@
                         }
                     });
                    
-                       $stateProvider
+
+                $stateProvider
                     .state('app.login', {
                         name: "login",
                         url: "/login",
@@ -197,9 +198,9 @@
                             }
                         }
                     });
+                   
 
-
-                $urlRouterProvider.otherwise("/department");
+                $urlRouterProvider.otherwise("/login");
 
             }
         ]);

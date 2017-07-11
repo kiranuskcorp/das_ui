@@ -51,7 +51,6 @@ function leftNavController($scope, leftNavService, Excel, $state, $mdDialog,
              case 'Doctor':
             $rootScope.$emit("CallDoctorMethod", {});
             break;
-
              case 'Role':
             $rootScope.$emit("CallRoleMethod", {});
             break;

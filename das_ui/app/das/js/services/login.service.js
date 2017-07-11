@@ -1,7 +1,7 @@
-/*'use strict';
+'use strict';
     
     dasApplication.factory("loginService", loginService);
-    function loginService($http,__env,$window) {
+    function loginService($http,__env,$window, $state) {
            
 
         var service = {               
@@ -16,12 +16,18 @@
                     method : "POST",
                     data : user
                 }).then(function(response) {
-                  console.log(response);
-                    // success
-                }, function(response) { // optional
-                    // failed
+                   if(response.status == 200 && response.statusText == "OK"){
+                    $state.go("app.specialization")
+                   }else {   
+                        ($state.go("app.login"))
+
+                  }
+                }, function(response) { 
+
+                alert("Invalid username or password");
+                // optional
                 });
             }
          
             }
-    */
+    
