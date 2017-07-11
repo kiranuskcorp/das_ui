@@ -65,14 +65,14 @@ function userController($scope, userService, $mdDialog,$rootScope, $mdToast,
                     $scope.loading=false;
         });
 
-
+/*
             $scope.validatePassword = function(pswd){
                 if($scope.record.confirmPassword === pswd){
                     $scope.validatePswd = true;
                 }else{
                      $scope.validatePswd = false;
                 }
-            }
+            }*/
         
          
         var deregisterListener = $rootScope.$on("CallUserMethod", function(){
@@ -116,7 +116,6 @@ function userController($scope, userService, $mdDialog,$rootScope, $mdToast,
                         "gender": row.gender,
                         "address": row.address,
                         "password":row.password,
-                         "confirmPassword":row.confirmPassword,
                         "role": row.role,
                         "description": row.description,
                              "id":row.id
@@ -141,9 +140,8 @@ function userController($scope, userService, $mdDialog,$rootScope, $mdToast,
                             "dob": "",
                             "gender": "",
                             "address": "",
-                            "role":"",
                             "password":"",
-                            "confirmPassword":"",
+                            "role":"",
                             "description": ""
                 };
                 };
@@ -156,6 +154,25 @@ function userController($scope, userService, $mdDialog,$rootScope, $mdToast,
                     $scope.rowSelect = function(row) {
                     $scope.selected.push(row.id);
                 };
+
+
+             $scope.headerCheckbox = false;
+        $scope.selectAll = function() {
+            if(!$scope.headerCheckbox){
+            for ( var i in $scope.userData) {
+                $scope.userData[i]["checkboxValue"] = 'on';
+                $scope.selected.push($scope.userData[i]);
+            };
+            $scope.headerCheckbox = ($scope.headerCheckbox == false)?true:false;
+        }else if($scope.headerCheckbox){
+            for ( var i in $scope.userData) {
+                $scope.userData[i]["checkboxValue"] = 'off';
+                $scope.selected = [];
+            };
+            $scope.headerCheckbox = ($scope.headerCheckbox == true)?false:true;
+        };
+        //console.log($scope.selected);
+        };
 
 
             $scope.deleteRow = function(ev,row) {

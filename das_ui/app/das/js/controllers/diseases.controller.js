@@ -1,8 +1,8 @@
 /*(function() {*/
 'use strict';
-dasApplication.controller("departmentController", departmentController);
+dasApplication.controller("diseasesController", diseasesController);
 
-function departmentController($scope, departmentService, $mdDialog,$rootScope, $mdToast,
+function diseasesController($scope, diseasesService, $mdDialog,$rootScope, $mdToast,
         $timeout, $state, $mdSidenav, $log) {
 
     var self = {
@@ -10,14 +10,14 @@ function departmentController($scope, departmentService, $mdDialog,$rootScope, $
     };
     function init() {
         // console.log($state.current.name);
-         $rootScope.currentController = 'Department';
+         $rootScope.currentController = 'Diseases';
         var current = $state.current.name;
         $rootScope.currentDataEnable = true;
         $scope.currentState = current.split(/[\s.]+/);
         $scope.currentRoute = $scope.currentState[$scope.currentState.length - 1];
         $scope.customFullscreen = false;
         $scope.updatePage = false;
-        $scope.departmentData = [];
+        $scope.diseasesData = [];
         $scope.collection = [];
         $scope.selected = [];
         $scope.headerEnable = {};
@@ -25,20 +25,21 @@ function departmentController($scope, departmentService, $mdDialog,$rootScope, $
        
 
         $scope.record = {
-
-                        "departmentName": "",
-                        "description": ""
-
-        };
+                                            
+                        "name": "",
+                        "departmentId":"",
+                        "createdDate":"",
+                        "description":""
+                                };
             $scope.loading=true;
 
-            departmentService.getAllDepartments().then(function(response) {
-            $scope.departmentData = response.data;
-            $scope.departmentLength = response.data.length;
+            diseasesService.getAllDiseases().then(function(response) {
+            $scope.diseasesData = response.data;
+            $scope.diseasesLength = response.data.length;
             $rootScope.currentTableLength = 'Records Count :'+response.data.length;
         //  console.log($scope.employeesData);
-            $scope.departmentOptions = [ 200,300 ];
-            $scope.departmentPage = {
+            $scope.diseasesOptions = [ 200,300 ];
+            $scope.diseasesPage = {
                 pageSelect : true
             };
             $scope.query = {
@@ -52,57 +53,90 @@ function departmentController($scope, departmentService, $mdDialog,$rootScope, $
                     $scope.loading=false;
         });
 
+           
 
-        
-         
-        var deregisterListener = $rootScope.$on("CallDepartmentMethod", function(){
-            if ($rootScope.$$listeners["CallDepartmentMethod"].length > 1) {
-                            $rootScope.$$listeners["CallDepartmentMethod"].pop();
+        var deregisterListener = $rootScope.$on("CallDiseasesMethod", function(){
+            if ($rootScope.$$listeners["CallDiseasesMethod"].length > 1) {
+                            $rootScope.$$listeners["CallDiseasesMethod"].pop();
 
                 }
-                $scope.currentPage = 'Create';
            $scope.toggleRight();
-           $scope.emptyForm();
-         
+             $scope.emptyForm();
+             $scope.currentPage = "Create";
+           
         });
- var deregisterListener = $rootScope.$on("CallDepartmentSearchMethod", function(event, args) {
-            if ($rootScope.$$listeners["CallDepartmentSearchMethod"].length > 1) {
-                $rootScope.$$listeners["CallDepartmentSearchMethod"].pop();
+        var deregisterListener = $rootScope.$on("CallDiseasesSearchMethod", function(event, args) {
+            if ($rootScope.$$listeners["CallDiseasesSearchMethod"].length > 1) {
+                $rootScope.$$listeners["CallDiseasesSearchMethod"].pop();
             }            
             $scope.filterByText = args.text;
         });
            
- $scope.saveRecord = function() {
-    console.log($scope.record);
-            departmentService.create($scope.record).then(function(response) {
+        $scope.saveRecord = function() {
+            diseasesService.create($scope.record).then(function(response) {
              console.log(response);
             });
             $scope.cancelRecord();
               window.location.reload();
+
         }
-         $scope.setRowData = function(row) {
-                //console.log(row);
+
+
+            diseasesService.getAllDepartment().then(function(response) {
+            
+            $scope.departments = response.data;
+            console.log($scope.departments);
+             });
+
+            diseasesService.getAllSpecializations().then(function(response) {
+            
+            $scope.specializations = response.data;
+            console.log($scope.specializations);
+             });
+
+           /* $scope.getAllSpecializationByDepartmentId = function(departmentId) {
+            diseasesService.getAllSpecializationByDepartment(departmentId).then(function(response) {
+                $scope.specializations = response.data;
+                console.log($scope.specializations);
+                    });
+              };*/
+/*
+                $scope.getAllDoctorsByHospitalId = function(hospital) {
+            appointmentService.getAllDoctorsByHospital(hospital).then(function(response) {
+                $scope.doctors = response.data;
+                console.log(response.data);
+            });
+        };*/
+
+
+            $scope.setRowData = function(row) {
+                  $scope.currentPage = "Update";
                 $scope.updatePage = true;
-                $scope.currentPage = 'Update';
                 $scope.record = {
-                            "departmentName":row.departmentName,
-                             "description": row.description,
-                             "id":row.id
+
+                                "name": row.name,
+                                 "departmentId":row.departmentId,
+                                "description":row.description,
+                                 "id":row.id
                 };
             };
             $scope.updateData = function() {
-               departmentService.update($scope.record).then(function(response) {
+               diseasesService.update($scope.record).then(function(response) {
                 });
                 $scope.cancelRecord();
-                   window.location.reload();
-                    $scope.currentPage = 'Create';
+            window.location.reload();
+            $scope.currentPage = 'Create';
             }
              $scope.emptyForm = function() {
                     $scope.updatePage = false;
                     $scope.record = {
-                                 "departmentName": "",
-                                 "description": ""
+                                
+                        "name": "",
+                        "departmentId":"",
+                        "createdDate":"",
+                        "description":""
                 };
+
                 };
                $scope.cancelRecord = function() {
                     $mdSidenav('right').close().then(function() {
@@ -114,26 +148,26 @@ function departmentController($scope, departmentService, $mdDialog,$rootScope, $
                     $scope.selected.push(row.id);
                 };
 
-        
-  $scope.headerCheckbox = false;
-        $scope.selectAll = function() {
+            $scope.headerCheckbox = false;
+                  $scope.selectAll = function() {
             if(!$scope.headerCheckbox){
-            for ( var i in $scope.departmentData) {
-                $scope.departmentData[i]["checkboxValue"] = 'on';
-                $scope.selected.push($scope.departmentData[i]);
+            for ( var i in $scope.diseasesData) {
+                $scope.diseasesData[i]["checkboxValue"] = 'on';
+                $scope.selected.push($scope.diseasesData[i]);
             };
             $scope.headerCheckbox = ($scope.headerCheckbox == false)?true:false;
         }else if($scope.headerCheckbox){
-            for ( var i in $scope.departmentData) {
-                $scope.departmentData[i]["checkboxValue"] = 'off';
+            for ( var i in $scope.diseasesData) {
+                $scope.diseasesData[i]["checkboxValue"] = 'off';
                 $scope.selected = [];
             };
             $scope.headerCheckbox = ($scope.headerCheckbox == true)?false:true;
         };
-        //console.log($scope.selected);
-        };
+    };
 
-         $scope.deleteRow = function(ev,row) {
+            
+
+            $scope.deleteRow = function(ev,row) {
             
                 var confirm = $mdDialog
                         .confirm()
@@ -146,7 +180,7 @@ function departmentController($scope, departmentService, $mdDialog,$rootScope, $
                         .show(confirm)
                         .then(
                                 function() {
-                                    departmentService.deleteRow(row.id).then(function(response) {
+                                   diseasesService.deleteRow(row.id).then(function(response) {
                 
             });
                                    window.location.reload();
@@ -157,8 +191,7 @@ function departmentController($scope, departmentService, $mdDialog,$rootScope, $
             
     
         };
-        
-       
+
         /* Side nav starts */
         $scope.toggleLeft = buildDelayedToggler('left');
         $scope.toggleRight = buildToggler('right');
@@ -207,7 +240,7 @@ function departmentController($scope, departmentService, $mdDialog,$rootScope, $
                return self;
 };
 
-dasApplication.directive('createDepartment', function($state) {
+dasApplication.directive('createDiseases', function($state) {
     return {
         restrict : 'E',
         replace : true,

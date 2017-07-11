@@ -2,7 +2,7 @@
 	<div layout="row" layout-xs="column" layout-sm="column" layout-margin>
 			
 	</div>
-	
+	 
 	<md-content layout="column" flex> <md-table-container>
 	<table md-table id="specializationTable">
 		<thead md-head md-order="query.order">
@@ -12,22 +12,10 @@
 						ng-true-value="'on'" ng-false-value="'off'"
 						class="md-warn md-align-top-left" flex></span></th>
 				<th md-column><span>Name</span></th>
-				<!-- <th md-column><span>Created Date</span></th>
-				<th md-column><span>Updated Date</span></th>
-				 -->
+			
 				 <th md-column><span>Department</span></th>
 				 <th md-column><span>Description</span></th>
 
-				<!-- <th md-column ng-show="headerEnable.alternatePhone"><span>Alternate Phone</span></th> 
-				<th md-column ng-show="client"><span>Client</span></th>
-				<th md-column ng-show="headerEnable.skypeId" ><span>Skype Id</span></th> 
-				 <th md-column ng-show="headerEnable.timezone" ><span>Time Zone</span></th> 
-				<th md-column ng-show="batch" ><span>Batch</span></th>
-				<th md-column><span>Technology</span></th>
-				<th md-column><span>Invoice</span></th>
-				<th md-column class="center"><span>Paid Status</span></th>
-				<th md-column class="center"><span>Received Status</span></th>
-				<th md-column class="center" ng-show="status"><span>Status</span></th>-->
 				<th md-column>Actions 
 
 				<md-menu class=" headerMore cursor">
@@ -55,20 +43,9 @@
 						ng-true-value="'on'" ng-false-value="'off'"
 						class="md-warn md-align-top-left" flex></td>
 				<td md-cell>{{data.specializationName}}</td>
-				<!-- <td md-cell>{{data.createdDate}}</td>
-				<td md-cell>{{data.updatedDate}}</td> -->
+			
 				<td md-cell>{{data.departmentName}}</td>
 				<td md-cell>{{data.description}}</td>
-			<!-- 	<td md-cell ng-show="headerEnable.alternatePhone">{{data.altenatePhone}}</td> 
-				<td md-cell ng-show="client">{{data.clientName}}</td>
-				<td md-cell ng-show="headerEnable.skypeId">{{data.skypeId}}</td>
-				<td md-cell  ng-show="headerEnable.timezone">{{data.timezone}}</td> 
-				<td md-cell  ng-show="batch">{{data.batchId}}</td>
-				<td md-cell>{{data.technologyName}}</td>
-				<td md-cell>{{data.invoice}}</td>
-				<td md-cell>{{data.paidStatus}}</td>
-				<td md-cell>{{data.receivedStatus}}</td> -->
-
 		
 				<td md-cell><span> <md-tooltip> Update </md-tooltip> <i
 						class="material-icons" ng-click="setRowData(data);toggleRight()"
@@ -82,7 +59,7 @@
 
 	<div layout="column" ng-cloak>
 		<section layout="row" flex>
-			<md-sidenav class="md-sidenav-right md-whiteframe-4dp"
+			<md-sidenav class="md-sidenav md-whiteframe-4dp"
 				md-component-id="right"> <md-toolbar
 				class="md-theme-light">
 			<h1 class="md-toolbar-tools">Specialization {{currentPage}}</h1>

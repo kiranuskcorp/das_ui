@@ -1,0 +1,52 @@
+<div class="demo-md-panel-animation md-padding">  
+    
+    <md-content layout="column" flex> <md-table-container>
+    <table md-table id="questionTable">
+        <thead md-head md-order="query.order">
+            <tr md-row ng-class-odd="'tableHead'">
+                
+                <th md-column ><span>Reg ID</span></th>
+                <th md-column ><span>Appointment Date</span></th>
+                <th md-column ><span>Doctor </span></th>
+                <th md-column ><span>Patient Name</span></th>
+                <th md-column ><span>DOB</span></th>
+                <th md-column ><span>Phone</span></th>
+                <th md-column ><span>Hospital</span></th>
+                <th md-column ><span>Time</span></th>
+                <th md-column ><span>Disease</span></th>
+                <th md-column ><span>Email</span></th>
+                <th md-column ><span>Address</span></th> 
+               
+            </tr>
+        </thead>
+        <tbody md-body>
+            <tr md-row ng-class-odd="'odd'" ng-repeat="reporting in reportingsData">
+                <td md-cell >{{reporting.registrationId}}</td>
+                <td md-cell >{{reporting.appointmentDate}}</td>
+                <td md-cell >{{reporting.doctorName}}</td>               
+                <td md-cell >{{reporting.patientName}}</td>
+                <td md-cell >{{reporting.dob}}</td>
+                <td md-cell >{{reporting.phoneNumber}}</td>
+                <td md-cell >{{reporting.hospitalName}}</td>
+                <td md-cell >{{reporting.time}}</td>
+                <td md-cell >{{reporting.diseases}}</td> 
+                <td md-cell >{{reporting.email}}</td> 
+                <td md-cell >{{reporting.area}} {{reporting.city}} {{reporting.state}} {{reporting.pincode}}</td>
+            </tr>
+        </tbody>
+    </table>
+    </md-table-container> 
+    </md-content>
+
+    <div layout="column" ng-cloak>
+        <section layout="row" flex>
+            <md-sidenav class="md-sidenav md-whiteframe-4dp"
+                md-component-id="right"> <md-toolbar
+                class="md-theme-light">
+            <h1 class="md-toolbar-tools">{{pageType}} Reporting</h1>
+            </md-toolbar> 
+            <ng-include src="'pages/app.reporting/app.reporting.record.html'"></ng-include></md-sidenav>
+        </section>
+    </div>
+
+</div>

@@ -1,26 +1,19 @@
 <div class="demo-md-panel-animation md-padding">
-	<div layout="row" layout-xs="column" layout-sm="column" layout-margin>		
+	<div layout="row" layout-xs="column" layout-sm="column" layout-margin>
 	</div>
 	<md-content layout="column" flex> <md-table-container>
-	<table md-table id="userTable">
+	<table md-table id="roleTable">
 		<thead md-head md-order="query.order">
 			<tr md-row ng-class-odd="'tableHead'">
 				<th md-column><span> <md-checkbox ng-click="selectAll()" ng-model="data.checkboxValue"
 				 aria-label="Checkbox 2"
 						ng-true-value="'on'" ng-false-value="'off'"
 						class="md-warn md-align-top-left" flex></span></th>
-							<th md-column><span>Name</span></th>
-							<th md-column><span>Email</span></th>
-							<th md-column><span>Password</span></th>
-							<th md-column><span>Phone Number</span></th>
-							<th md-column><span>Alternate Phone</span></th>
-							<th md-column><span>Date Of Birth</span></th>
-							<th md-column><span>Gender</span></th>
-							<th md-column><span>Address</span></th>
-							<th md-column><span>Role</span></th>
+				<th md-column><span>Name</span></th>
+				 <th md-column><span>Description</span></th>
 				<th md-column>Actions 
 				<md-menu class=" headerMore cursor">
-                  <i class="material-icons white" ng-click=""></i>
+                   <i class="material-icons white" ng-click=""></i>
               		 <md-menu-content width="3">
                  		 <md-menu-item ng-repeat="header in headers">
                   		   <md-button ng-click="menuItemClick($index,header.key)">
@@ -38,25 +31,17 @@
 		</thead>
 		<tbody md-body>
 			<tr md-row ng-class-odd="'odd'"
-				ng-repeat="data in userData | orderBy: query.order | filter: filterByText | limitTo: query.limit : (query.page -1) * query.limit track by $index">
+				ng-repeat="data in roleData | orderBy: query.order | filter: filterByText | limitTo: query.limit : (query.page -1) * query.limit track by $index">
 				<td md-cell><md-checkbox ng-model="data.checkboxValue"
 						ng-click="rowSelect(data)" aria-label="Checkbox 2"
 						ng-true-value="'on'" ng-false-value="'off'"
 						class="md-warn md-align-top-left" flex></td>
-						<td md-cell>{{data.name}}</td>
-				<td md-cell>{{data.email}}</td>
-				<td md-cell>{{data.password}}</td>
-				<td md-cell>{{data.phone}}</td>
-				<td md-cell>{{data.alternatePhone}}</td>
-				<td md-cell>{{data.dob}}</td>
-				<td md-cell>{{data.gender}}</td>
-				<td md-cell>{{data.address}}</td> 
-				<td md-cell>{{data.role}}</td> 
+				<td md-cell>{{data.roleName}}</td>
+				<td md-cell>{{data.description}}</td>
 				<td md-cell><span> <md-tooltip> Update </md-tooltip> <i
 						class="material-icons" ng-click="setRowData(data);toggleRight()"
 						ng-hide="isOpenRight()">border_color</i></span><span><md-tooltip>
-						Delete </md-tooltip> <i class="material-icons"  ng-click="deleteRow($event,data)">delete_forever</i></span>  <span><md-tooltip>
-						{{data.description}} </md-tooltip> <i class="material-icons">description</i></span></td>
+						Delete </md-tooltip> <i class="material-icons"  ng-click="deleteRow($event,data)">delete_forever</i></span></td>
 			</tr>
 		</tbody>
 	</table>
@@ -64,11 +49,11 @@
 	</md-content>
 	<div layout="column" ng-cloak>
 		<section layout="row" flex>
-			<md-sidenav class="md-sidenav md-whiteframe-4dp"
+			<md-sidenav class="md-sidenav-right md-whiteframe-4dp"
 				md-component-id="right"> <md-toolbar
 				class="md-theme-light">
-			<h1 class="md-toolbar-tools">User {{currentPage}}</h1>
-			</md-toolbar> <create-user /> </md-sidenav>
+			<h1 class="md-toolbar-tools">Specialization {{currentPage}}</h1>
+			</md-toolbar> <create-specialization /> </md-sidenav>
 		</section>
 	</div>
 </div>

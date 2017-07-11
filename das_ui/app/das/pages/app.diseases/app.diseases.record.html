@@ -1,0 +1,34 @@
+<md-content layout-padding>
+<form name="diseasesCreateForm">
+	<md-input-container class="md-block"> <label>Name</label>
+	<input  name="name" ng-model="record.name" required> </md-input-container>
+	
+    <md-input-container class="md-block" flex-gt-sm> <label>Department
+    </label> <md-select ng-model="record.departmentId" ng-change="getAllSpecializationByDepartmentId(record.departmentId)" required > 
+    <md-option   ng-repeat="department in departments" ng-value="department.id"
+        ng-selected="department.id === record.departmentId">{{
+    department.departmentName}}</md-option> </md-select> </md-input-container>
+
+  <!--   <md-input-container class="md-block" flex-gt-sm> <label>Specialization
+    </label> <md-select ng-model="record.specializationId" > <md-option
+        ng-repeat="specialization in specializations" ng-value="specialization.id"
+        ng-selected="specialization.id === record.specializationId">{{
+    specialization.specializationName}}</md-option> </md-select> </md-input-container> -->
+
+
+    <md-input-container class="md-block"> <label>Description</label>
+	<textarea name="description" ng-model="record.description"></textarea> </md-input-container>
+
+	<md-input-container class="md-block"> <input
+		type="hidden" name="Id" ng-model="record.id"> </md-input-container>
+	
+	</md-input-container>
+
+	<md-button class="md-raised md-primary" ng-click="saveRecord()"
+		ng-hide="updatePage" ng-disabled="diseasesCreateForm.$invalid"> Save </md-button>
+	<md-button class="md-raised md-primary" ng-click="updateData()"
+		ng-show="updatePage" ng-disabled="diseasesCreateForm.$invalid">Update </md-button>
+	<md-button class="md-raised" ng-click="cancelRecord()" >
+	Cancel </md-button>
+</form>
+</md-content>

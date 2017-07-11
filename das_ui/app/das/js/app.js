@@ -73,6 +73,35 @@
                             }
                         }
                     });
+
+                      $stateProvider
+                    .state('app.role', {
+                        name: "role",
+                        url: "/role",
+                        views: {
+
+                            "content@": {
+                                controller: "roleController",
+                                controllerAs: 'self',
+                                templateUrl: "pages/app.role/app.role.html"
+                            }
+                        }
+                    });
+                      $stateProvider
+                    .state('app.diseases', {
+                        name: "diseases",
+                        url: "/diseases",
+                        views: {
+
+                            "content@": {
+                                controller: "diseasesController",
+                                controllerAs: 'self',
+                                templateUrl: "pages/app.diseases/app.diseases.html"
+                            }
+                        }
+                    });
+
+
                          $stateProvider
                     .state('app.doctor', {
                         name: "doctor",
@@ -128,7 +157,19 @@
                             }
                         }
                     });
-                    
+                      $stateProvider
+                    .state('app.reporting', {
+                        name: "reporting",
+                        url: "/reporting",
+                        views: {
+
+                            "content@": {
+                                controller: "reportingController",
+                                controllerAs: 'self',
+                                templateUrl: "pages/app.reporting/app.reporting.html"
+                            }
+                        }
+                    });
                     $stateProvider
                     .state('app.specialization', {
                         name: "specialization",
@@ -143,7 +184,27 @@
                         }
                     });
                    
+<<<<<<< HEAD
                 $urlRouterProvider.otherwise("/hospital");
+=======
+
+                $stateProvider
+                    .state('app.login', {
+                        name: "login",
+                        url: "/login",
+                        views: {
+
+                            "content@": {
+                                controller: "loginController",
+                                controllerAs: 'self',
+                                templateUrl: "pages/app.login/app.login.html"
+                            }
+                        }
+                    });
+                   
+
+                $urlRouterProvider.otherwise("/login");
+>>>>>>> e6955b560c2e18d0546b988dd9be6de9b6a5d2ab
 
             }
         ]);
