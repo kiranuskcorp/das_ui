@@ -2,39 +2,32 @@
 <form name="doctorCreateForm">
 	<md-input-container class="md-block" flex-gt-sm> <label>Name</label>
 	<input  name="name" ng-model="record.name"  required="required"></md-input-container>
-
 <md-input-container class="md-block" flex-gt-sm> <label>Email</label>
 	<input  name="Email" ng-model="record.email" type="email" required > </md-input-container>
-
 	<md-input-container class="md-block" flex-gt-sm> <label>Phone</label>
 	<input  name="Phone" ng-model="record.phone" required only-digits> </md-input-container>
 
 	<md-input-container class="md-block" flex-gt-sm> <label>Alternate Phone</label>
 	<input  name="Alternate Phone" ng-model="record.alternatePhone" required only-digits> </md-input-container>
-
-	<md-input-container class="md-block" flex-gt-sm> <label>Department Name
-		</label> <md-select ng-model="record.departmentId" required 
+	<md-input-container class="md-block" flex-gt-sm> <label>Department Name</label> 
+	<md-select ng-model="record.departmentId" required 
 		ng-change="getAllSpecializationsByDepartmentId(record.departmentId)"> <md-option
 		ng-repeat="department in departments" ng-value="department.id"
 		ng-selected="department.id === record.departmentId">{{
 	department.departmentName}}</md-option> </md-select> </md-input-container>
-
 	<md-input-container class="md-block" flex-gt-sm> <label>Specialization
 		</label> <md-select ng-model="record.specializationId" required ng-change="getAllDepartmentsBySpecializations(record.specializationId)"> <md-option
 		ng-repeat="specialization in specializations" ng-value="specialization.id"
 		ng-selected="specialization.id === record.specializationId">{{
 	 specialization.specializationName}}</md-option> </md-select> </md-input-container>
-
 	 <md-input-container class="md-block" flex-gt-sm> <label>Hospital
 		</label> <md-select ng-model="record.hospitalId" required> <md-option
 		ng-repeat="hospital in hospitals" ng-value="hospital.id"
 		ng-selected="hospital.id === record.hospitalName">{{
 	 hospital.name}}</md-option> </md-select> </md-input-container>
 
-
 <md-input-container class="md-block"> <label>Date of Birth</label>
 	<input  name="dob" ng-model="record.dob" required type="Date" max="{{currentDate | date: 'yyyy-MM-dd'}}"> </md-input-container>
-
 
 	<md-input-container class="md-block" flex-gt-sm> <label>Gender
  </label> <md-select ng-model="record.gender" required> <md-option
@@ -52,35 +45,6 @@
 		</label> <md-select ng-model="record.masterSlot"> <md-option
 		ng-repeat="masterSlot in masterSlots" ng-value="masterSlot.id"
 		ng-selected="masterSlot.id === record.masterSlot">{{masterSlot.value}}</md-option> </md-select> </md-input-container>
-	
-
-	<!-- <div>
-		<fieldset>
-		<legend>Address</legend>
-		<md-input-container class="md-block" flex-gt-sm> <label>State
-		</label> <md-select ng-model="record.state" ng-change="getCitiesByState(state.key)" required> <md-option
-		ng-repeat="state in states" ng-value="state.key"
-		ng-selected="state.key === record.state">{{
-		state.value }}</md-option> </md-select> </md-input-container>
-
-<md-input-container class="md-block" flex-gt-sm> <label>District
-		</label> <md-select ng-model="record.district" > <md-option
-		ng-repeat="district in cities" ng-value="district.value"
-		ng-selected="district.value === record.district">{{
-		district.value }}</md-option> </md-select> </md-input-container>
-
-		<md-input-container class="md-block" flex-gt-sm> <label>City
-		</label> <md-select ng-model="record.city" required> <md-option
-		ng-repeat="city in cities" ng-value="city.key"
-		ng-selected="city.key === record.city">{{
-		city.value }}</md-option> </md-select> </md-input-container> 
-
-		<md-input-container class="md-block" flex-gt-sm> <label>Area</label>
-		<input  name="Area" ng-model="record.area" required > </md-input-container>
-
-		
-		</fieldset>
-	</div> -->
 	<md-input-container class="md-block"> <label>Description
 		</label> <textarea name="description" ng-model="record.description"></textarea> </md-input-container>	
 
@@ -91,8 +55,4 @@
 	<md-button class="md-raised" ng-click="cancelRecord()">
 	Cancel </md-button>
 </form>
-
 </md-content>
-
-
-

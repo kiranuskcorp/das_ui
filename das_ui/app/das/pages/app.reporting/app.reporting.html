@@ -20,7 +20,7 @@
             </tr>
         </thead>
         <tbody md-body>
-            <tr md-row ng-class-odd="'odd'" ng-repeat="reporting in reportingsData">
+            <tr md-row ng-class-even="'even'" ng-repeat="reporting in reportingsData">
                 <td md-cell >{{reporting.registrationId}}</td>
                 <td md-cell >{{reporting.appointmentDate}}</td>
                 <td md-cell >{{reporting.doctorName}}</td>               
@@ -40,7 +40,7 @@
 
     <div layout="column" ng-cloak>
         <section layout="row" flex>
-            <md-sidenav class="md-sidenav-right md-whiteframe-4dp"
+            <md-sidenav class="md-sidenav md-whiteframe-4dp"
                 md-component-id="right"> <md-toolbar
                 class="md-theme-light">
             <h1 class="md-toolbar-tools">{{pageType}} Reporting</h1>

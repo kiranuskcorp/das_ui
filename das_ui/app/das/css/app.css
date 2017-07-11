@@ -33,11 +33,11 @@ table.md-table > tbody > tr > td:nth-child(2) {
         position: absolute;
     padding-left: 5em;
 }
-.odd{
-    background-color: #2EB5A3;
+.even{
+    background-color:  #B0C4DE
 }
 .tableHead{
-    background-color: #393a3d
+    background-color:       #6495ED
 }
 .cursor{
     cursor: pointer;

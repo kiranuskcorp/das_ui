@@ -16,11 +16,6 @@
       "value":"Hospital",
       "route":"app.hospital"
    },
-   {  
-      "key":"appointment",
-      "value":"Appointment",
-      "route":"app.appointment"
-   },
     {  
       "key":"department",
       "value":"Department",
@@ -48,6 +43,7 @@
       "key":"login",
       "value":"Login",
       "route":"app.login"
+   },
 
    {  
       "key":"appointment",
