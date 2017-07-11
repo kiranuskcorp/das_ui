@@ -1,6 +1,10 @@
 <div class="demo-md-panel-animation md-padding">
 	
-<div class="overlay loadingImg" ng-show="loading">
+	<div layout="row" layout-xs="column" layout-sm="column" layout-margin>
+			
+	</div>
+	
+	<div class="overlay loadingImg" ng-show="loading">
 		<h1 style="text-align: center; margin-top: 20%">loading....</h1>
 	</div>
 
@@ -10,60 +14,58 @@
 		<thead md-head md-order="query.order">
 			<tr md-row ng-class-odd="'tableHead'">
 				<th md-column><span> <md-checkbox ng-model="headerCheck"
-						aria-label="Checkbox 2" ng-click="selectAll()"
-						ng-true-value="'on'" ng-false-value="'off'"
-						class="md-warn md-align-top-left" flex></span></th>
-				<th md-column ><span>Name</span></th>
-				<th md-column><span>Available Facilities</span></th>
-				<th md-column><span>Department</span></th>
-				<th md-column><span>Hospital Registration Number</span></th>
-				<th md-column><span>Hospital Establishment Date</span></th>
-				<th md-column><span>Timings</span></th>
-				<th md-column><span>Contact</span></th>
-				<th md-column><span>Address</span></th>
-				
-				
-				<th md-column>Actions</th>
-			</tr>
-		</thead>
-		<tbody md-body>
-			<tr md-row ng-class-odd="'odd'"
+					aria-label="Checkbox 2" ng-click="selectAll()"
+					ng-true-value="'on'" ng-false-value="'off'"
+					class="md-warn md-align-top-left" flex></span></th>
+					<th md-column ><span>Name</span></th>
+					<th md-column><span>Available Facilities</span></th>
+					<th md-column><span>Department</span></th>
+					<th md-column><span>Hospital Registration Number</span></th>
+					<th md-column><span>Hospital Establishment Date</span></th>
+					<th md-column><span>Timings</span></th>
+					<th md-column><span>POC</span></th>
+					<th md-column><span>Address</span></th>
+					<th md-column>Actions</th>
+				</tr>
+			</thead>
+			<tbody md-body>
+				<tr md-row ng-class-odd="'odd'"
 				ng-repeat="data in hospitalsData | orderBy: query.order | filter: filterByText | limitTo: query.limit : (query.page -1) * query.limit track by $index">
 				<td md-cell><md-checkbox ng-model="data.checkboxValue"
-						ng-click="rowSelect(data)" aria-label="Checkbox 2"
-						ng-true-value="'on'" ng-false-value="'off'"
-						class="md-warn md-align-top-left" flex></td>
-				<td md-cell >{{data.name}}</td>
-				<td md-cell >{{data.availableFacilities}}</td>
-				<td md-cell >{{data.departmentName}}</td>
-				<td md-cell >{{data.hospitalRegistrationNumber}}</td>
-				<td md-cell >{{data.hospitalEstablishmentDate}}</td>
-				<td md-cell >{{data.startTime}}--{{data.endTime}}</td>
-				<td md-cell >{{data.contact}}</td>
-				<td md-cell >{{data.area}}, {{data.district}}, {{data.state}}</td>
-				
+					ng-click="rowSelect(data)" aria-label="Checkbox 2"
+					ng-true-value="'on'" ng-false-value="'off'"
+					class="md-warn md-align-top-left" flex></td>
+					<td md-cell >{{data.name}}</td>
+					<td md-cell >{{data.availableFacilities}}</td>
+					<td md-cell >{{data.departmentName}}</td>
+					<td md-cell >{{data.hospitalRegistrationNumber}}</td>
+					<td md-cell >{{data.hospitalEstablishmentDate}}</td>
+					<td md-cell >{{data.startTime}}--{{data.endTime}}</td>
+					<td md-cell >{{data.contact}}</td>
+					<td md-cell >{{data.area}}, {{data.district}}, {{data.state}}</td>
+
 					<td md-cell width="100"><span> <md-tooltip> Update </md-tooltip> <i
 						class="material-icons cursor" ng-click="setRowData(data);toggleRight()"
 						ng-hide="isOpenRight()">border_color</i></span><span><md-tooltip>
 						Delete </md-tooltip> <i class="material-icons cursor" ng-click="deleteRow($event,data)">delete_forever</i></span> <span><md-tooltip>
 						{{data.description}} </md-tooltip> <i class="material-icons cursor">description</i>
-						</span></td>
-		</tr>
-		</tbody>
-	</table>
+					</span></td>
+				</tr>
+			</tbody>
+		</table>
 	</md-table-container> 
-	</md-content>
-	<div layout="column" ng-cloak>
-		<section layout="row" flex>
-			<md-sidenav class="md-sidenav-right  md-whiteframe-4dp"
-				md-component-id="right"> <md-toolbar
-				class="md-theme-light">
-			<h1 class="md-toolbar-tools">Hospital {{currentPage}}</h1>
-			</md-toolbar> 
+</md-content>
+<div layout="column" ng-cloak>
+	<section layout="row" flex>
+		<md-sidenav class="md-sidenav-right  md-whiteframe-4dp"
+		md-component-id="right"> <md-toolbar
+		class="md-theme-light">
+		<h1 class="md-toolbar-tools">Hospital {{currentPage}}</h1>
+	</md-toolbar> 
 
-			<div ng-include="'pages/app.hospital/app.hospital.record.html'"> </div>
-			 </md-sidenav>
-		</section>
-	</div>
+	<div ng-include="'pages/app.hospital/app.hospital.record.html'"> </div>
+</md-sidenav>
+</section>
+</div>
 </div>
 

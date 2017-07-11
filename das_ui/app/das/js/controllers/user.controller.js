@@ -25,7 +25,7 @@ function userController($scope, userService, $mdDialog,$rootScope, $mdToast,
           $scope.currentDate = new Date();
          
           $scope.genders = [{"id":"Male","value":"Male"},{"id":"Female","value":"Female"}];
-          $scope.roles = [{"id":"Admin","value":"Admin"},{"id":"Receptionist","value":"Receptionist"}];
+          $scope.roles = [{"id":"Admin","value":"Admin"},{"id":"Doctor","value":"Doctor"},{"id":"DE Operator","value":"DE Operator"}];
           
         $scope.exportData = [];
        

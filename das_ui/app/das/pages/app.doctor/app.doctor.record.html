@@ -13,23 +13,35 @@
 	<input  name="Alternate Phone" ng-model="record.alternatePhone" required only-digits> </md-input-container>
 
 	<md-input-container class="md-block" flex-gt-sm> <label>Department Name
-		</label> <md-select ng-model="record.departmentName" required> <md-option
+		</label> <md-select ng-model="record.departmentId" required 
+		ng-change="getAllSpecializationsByDepartmentId(record.departmentId)"> <md-option
 		ng-repeat="department in departments" ng-value="department.id"
-		ng-selected="department.id === record.departmentName">{{
+		ng-selected="department.id === record.departmentId">{{
 	department.departmentName}}</md-option> </md-select> </md-input-container>
 
 	<md-input-container class="md-block" flex-gt-sm> <label>Specialization
-		</label> <md-select ng-model="record.specializationName" required> <md-option
+		</label> <md-select ng-model="record.specializationId" required ng-change="getAllDepartmentsBySpecializations(record.specializationId)"> <md-option
 		ng-repeat="specialization in specializations" ng-value="specialization.id"
-		ng-selected="specialization.id === record.specializationName">{{
+		ng-selected="specialization.id === record.specializationId">{{
 	 specialization.specializationName}}</md-option> </md-select> </md-input-container>
 
 	 <md-input-container class="md-block" flex-gt-sm> <label>Hospital
-		</label> <md-select ng-model="record.hospitalName" required> <md-option
+		</label> <md-select ng-model="record.hospitalId" required> <md-option
 		ng-repeat="hospital in hospitals" ng-value="hospital.id"
 		ng-selected="hospital.id === record.hospitalName">{{
 	 hospital.name}}</md-option> </md-select> </md-input-container>
 
+
+<md-input-container class="md-block"> <label>Date of Birth</label>
+	<input  name="dob" ng-model="record.dob" required type="Date" max="{{currentDate | date: 'yyyy-MM-dd'}}"> </md-input-container>
+
+
+	<md-input-container class="md-block" flex-gt-sm> <label>Gender
+ </label> <md-select ng-model="record.gender" required> <md-option
+        ng-repeat="gender in genders" ng-value="gender.value"
+        ng-selected="gender.id === record.gender">{{
+    gender.value }}</md-option> </md-select> </md-input-container>
+    
 	<md-input-container class="md-block" flex-gt-sm> <label>Rating</label>
 	<input  name="rating" ng-model="record.rating" type="text" required> </md-input-container>
 

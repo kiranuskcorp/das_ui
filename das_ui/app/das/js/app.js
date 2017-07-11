@@ -184,6 +184,9 @@
                         }
                     });
                    
+<<<<<<< HEAD
+                $urlRouterProvider.otherwise("/hospital");
+=======
 
                 $stateProvider
                     .state('app.login', {
@@ -201,6 +204,7 @@
                    
 
                 $urlRouterProvider.otherwise("/login");
+>>>>>>> e6955b560c2e18d0546b988dd9be6de9b6a5d2ab
 
             }
         ]);

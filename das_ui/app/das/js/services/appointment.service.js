@@ -10,6 +10,7 @@ function appointmentService($http, $window, __env) {
 		getAllHospitalsByDoctor:getAllHospitalsByDoctor,		
 		getAllStates:getAllStates,
 		getAllCities:getAllCities,
+		/*getAllDiseases:getAllDiseases,*/
 		create:create,
 		update:update,
 		deleteRow:deleteRow
@@ -23,6 +24,9 @@ function appointmentService($http, $window, __env) {
 		return $http.get("./mock/timeConstants.json");
 	}
 	 
+	/*function getAllDiseases() {
+		return $http.get(url + "/diseases/readAll");
+	}*/
 	function getAllDoctors() {
 		return $http.get(url + "/doctors/readAll");
 	}
