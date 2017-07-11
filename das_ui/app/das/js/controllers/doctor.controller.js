@@ -16,11 +16,15 @@ function doctorController($scope, doctorService, Excel, $state, $mdDialog,
 		$scope.currentRoute = $scope.currentState[$scope.currentState.length - 1];
 		$scope.customFullscreen = false;
 		$scope.updatePage = false;
+		$scope.specializationSelected= false;
+		$scope.currentDate = new Date();
 		$scope.clientsData = [];
 		$scope.collection = [];
 		$scope.selected = [];
 		$scope.headerEnable = {};
 		$scope.exportData = [];
+
+		$scope.genders = [{"id":"Male","value":"Male"},{"id":"Female","value":"Female"}];
 		
 
 		
@@ -35,9 +39,11 @@ function doctorController($scope, doctorService, Excel, $state, $mdDialog,
 			"email":"",
 			"phone":"",
             "alternatePhone":"",
-			"departmentName":"",
-			"specializationName":"",
-			"hospitalName":"",
+			"departmentId":"",
+			"specializationId":"",
+			"hospitalId":"",
+			"dob":"",
+			"gender":"",
 			"rating":"",
 			"experience":"",
 			"masterSlot":"",
@@ -45,6 +51,12 @@ function doctorController($scope, doctorService, Excel, $state, $mdDialog,
 		};
 
 		$scope.loading = true;
+
+		$scope.getAllSpecializationsByDepartmentId = function(department){
+            doctorService.getAllSpecializationsByDepartments(department).then(function(response) {
+            $scope.specializations = response.data;
+        });
+		}
 		doctorService.getAllDepartments().then(function(response) {
             $scope.departments = response.data;
         });
@@ -58,9 +70,9 @@ function doctorController($scope, doctorService, Excel, $state, $mdDialog,
 			$scope.hospitals = response.data;
 			
 			});
-        doctorService.getAllSpecializations().then(function(response) {
+       /* doctorService.getAllSpecializations().then(function(response) {
 			$scope.specializations = response.data;
-			});
+			});*/
         doctorService.getAllMasterSlots().then(function(response) {
 			$scope.masterSlots = response.data;
 			});
@@ -122,14 +134,17 @@ function doctorController($scope, doctorService, Excel, $state, $mdDialog,
 			$scope.currentPage = 'Update';
 			$scope.rowData = row;
 			$scope.updatePage = true;
+			$scope.getAllSpecializationsByDepartmentId(row.departmentId);
 			$scope.record = {
 			"name":row.name,
 			"email":row.email,
 			"phone":row.phone,
 			"alternatePhone":row.alternatePhone,
-			"departmentName":row.departmentId,
-			"specializationName":row.specializationId,
-			"hospitalName":row.hospitalId,
+			"departmentId":row.departmentId,
+			"specializationId":row.specializationId,
+			"hospitalId":row.hospitalId,
+			"dob":new Date(row.dob),
+			"gender":row.gender,
 			"rating":row.rating,
 			"experience":row.experience,
 			"masterSlot":row.masterSlot,
@@ -154,9 +169,9 @@ function doctorController($scope, doctorService, Excel, $state, $mdDialog,
 			"email":"",
 			"phone":"",
             "alternatePhone":"",
-			"departmentName":"",
-			"specializationName":"",
-			"hospitalName":"",
+			"departmentId":"",
+			"specializationId":"",
+			"hospitalId":"",
 			"rating":"",
 			"experience":"",
 			"masterSlot":"",

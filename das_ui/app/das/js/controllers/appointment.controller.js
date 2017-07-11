@@ -30,6 +30,7 @@ function appointmentController($scope, appointmentService, Excel, $state, $mdDia
 
         appointmentService.getAllAppointments().then(function(response) {
             $scope.appointments = response.data;
+             $rootScope.currentTableLength = 'Records Count :'+response.data.length;
         });
 
         appointmentService.getAllTimes().then(function(response) {
@@ -44,6 +45,11 @@ function appointmentController($scope, appointmentService, Excel, $state, $mdDia
         appointmentService.getAllCities().then(function(response) {
             $scope.cities = response.data;
         });
+        
+       /* appointmentService.getAllDiseases().then(function(response) {
+            $scope.diseases = response.data;
+        });*/
+
 
 
         $scope.saveRecord = function() {
@@ -108,6 +114,7 @@ function appointmentController($scope, appointmentService, Excel, $state, $mdDia
                         $scope.status = 'You decided to keep your Task.';
                     });
         };
+
         $scope.getAllDoctorsByHospitalId = function(hospital) {
             appointmentService.getAllDoctorsByHospital(hospital).then(function(response) {
             	$scope.doctors = response.data;
