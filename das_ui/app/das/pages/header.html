@@ -79,15 +79,13 @@
       </nav>
    </header>
    <div layout="row" layout-xs="column" layout-sm="column" layout-margin>
-      <div flex="70" >
+      <div flex="80" >
       <strong ng-show="currentDataEnable">{{currentController}}</strong>
       </div>
       <div flex="20" class="searchHeight">
          <md-input-container class="md-block" ng-show="toggleStart"  ng-mouseleave="hoverOut()"
-         > <label>Search</label> <input type="text" data-ng-change="searchRecord(filterTable)" data-ng-model="filterTable" style="width: 200px"> </md-input-container>
-      </div>
-      <div flex="10">
-      <strong ng-show="currentDataEnable">{{currentTableLength}}</strong>
+         > <label>Search</label> <input type="text" data-ng-change="searchRecord(filterTable)" data-ng-model="filterTable" style="width: 250px"> </md-input-container>
       </div>
    </div>
+   <span><strong style="float: right;margin-right:20px" ng-show="currentDataEnable">{{currentTableLength}}</strong></span>
 </div>

@@ -18,6 +18,7 @@ function hospitalController($scope, hospitalService, Excel, $state, $mdDialog,
 		$scope.updatePage = false;
 		$scope.hospitalsData = [];
 		$scope.collection = [];
+		$scope.currentDate = new Date();
 		$scope.selected = [];
 		$scope.headerEnable = {};
 		$scope.exportData = [];	
@@ -91,7 +92,16 @@ function hospitalController($scope, hospitalService, Excel, $state, $mdDialog,
 
 	}
 
+
+
 		$scope.saveRecord = function() {
+			$scope.availableFacilitiesToSave = JSON.stringify($scope.record.availableFacilities);
+			$scope.availableFacilitiesToSave = JSON.stringify($scope.record.availableFacilities);
+			//$scope.departmentIdToSave = JSON.stringify($scope.record.departmentId);
+			delete $scope.record.availableFacilities;
+			//delete $scope.record.departmentId;
+			$scope.record['availableFacilities'] = $scope.availableFacilitiesToSave;
+			//$scope.record['departmentId'] = $scope.departmentIdToSave;
 			console.log($scope.record);	
 				hospitalService.create($scope.record).then(function(response) {
        			 });
@@ -103,6 +113,13 @@ function hospitalController($scope, hospitalService, Excel, $state, $mdDialog,
 			$scope.currentPage = 'Update';
 			$scope.rowData = row;
 			$scope.updatePage = true;
+			var string = $scope.rowData.availableFacilities;
+			var array = string.split(',');
+			$scope.rowData.availableFacilities=array;
+			$scope.record['availableFacilities']=$scope.rowData.availableFacilities;
+			console.log($scope.rowData.availableFacilities);
+
+
 			$scope.record = {
 			"name": row.name,
 			"availableFacilities": row.availableFacilities,
@@ -121,6 +138,14 @@ function hospitalController($scope, hospitalService, Excel, $state, $mdDialog,
 
 		};
 		$scope.updateRecord = function() {
+
+			$scope.availableFacilitiesToSave = JSON.stringify($scope.record.availableFacilities);
+			$scope.availableFacilitiesToSave = JSON.stringify($scope.record.availableFacilities);
+			//$scope.departmentIdToSave = JSON.stringify($scope.record.departmentId);
+			delete $scope.record.availableFacilities;
+			//delete $scope.record.departmentId;
+			$scope.record['availableFacilities'] = $scope.availableFacilitiesToSave;
+
 			console.log($scope.record);
 			hospitalService.update($scope.record).then(function(response) {
        			 });

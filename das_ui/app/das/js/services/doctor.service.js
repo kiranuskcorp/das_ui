@@ -6,8 +6,8 @@ function doctorService($http, $window, __env) {
 		getAllStates:getAllStates,
 		getAllCities:getAllCities,
 		getAllDepartments:getAllDepartments,
+		getAllSpecializationsByDepartments: getAllSpecializationsByDepartments,
 		getAllHospitals:getAllHospitals,
-		getAllSpecializations:getAllSpecializations,
 		getAllMasterSlots:getAllMasterSlots,
 		create:create,
 		update:update,
@@ -19,11 +19,14 @@ function doctorService($http, $window, __env) {
 		return $http.get(url+"/doctors/readAll");
 	}
 	
-	function getAllSpecializations() {
+	/*function getAllSpecializations() {
 		return $http.get(url+"/specializations/readAll");
-	}
+	}*/
 	function getAllDepartments() {
 		return $http.get(url+"/departments/readAll");
+	}
+	function getAllSpecializationsByDepartments(department) {
+		return $http.get(url + "/specializations/readAllById?id="+department);
 	}
 	function getAllHospitals() {
 		return $http.get(url+"/hospitals/readAll");

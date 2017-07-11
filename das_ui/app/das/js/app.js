@@ -143,7 +143,7 @@
                         }
                     });
                    
-                $urlRouterProvider.otherwise("/department");
+                $urlRouterProvider.otherwise("/hospital");
 
             }
         ]);

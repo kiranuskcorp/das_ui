@@ -1,5 +1,7 @@
 <div class="demo-md-panel-animation md-padding">  
-    
+    <div layout="row" layout-xs="column" layout-sm="column" layout-margin>
+            
+    </div>
 
     <md-content layout="column" flex> <md-table-container>
     <table md-table id="questionTable">
@@ -9,7 +11,6 @@
                         ng-click="selectAll()" aria-label="Checkbox 2"
                         ng-true-value="'on'" ng-false-value="'off'"
                         class="md-warn md-align-top-left" flex></span></th>
-                <th md-column ><span>Registration ID</span></th>
                 <th md-column ><span>Appointment Date</span></th>
                 <th md-column ><span>Doctor </span></th>
                 <th md-column ><span>Patient Name</span></th>
@@ -29,7 +30,6 @@
                         ng-click="rowSelect(appointment)" aria-label="Checkbox 2"
                         ng-true-value="'on'" ng-false-value="'off'"
                         class="md-warn md-align-top-left" flex></td>
-                <td md-cell >{{appointment.registrationId}}</td>
                  <td md-cell >{{appointment.appointmentDate}}</td>
                 <td md-cell >{{appointment.doctorName}}</td>               
                 <td md-cell >{{appointment.patientName}}</td>
