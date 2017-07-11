@@ -38,6 +38,19 @@
       "value":"Diseases",
       "route":"app.diseases"
    },
+
+
+    {  
+      "key":"login",
+      "value":"Login",
+      "route":"app.login"
+   },
+
+   {  
+      "key":"appointment",
+      "value":"Appointment",
+      "route":"app.appointment"
+   },
   
  {
       "key":"reporting",

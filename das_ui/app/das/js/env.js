@@ -2,7 +2,8 @@
   window.__env = window.__env || {};
  
   // Base url
-  window.__env.baseUrl = 'http://localhost:9011';
+  /*window.__env.baseUrl = 'http://localhost:9011';
+  window.__env.baseUrl = 'http://localhost:9011';*/
   window.__env.baseUrl = 'http://localhost:9001';
  
   // context will be prepended to policy2-admin relative paths

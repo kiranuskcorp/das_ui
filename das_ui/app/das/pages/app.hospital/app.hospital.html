@@ -29,6 +29,7 @@
 				</tr>
 			</thead>
 			<tbody md-body>
+				<tr md-row ng-class-even="'even'"
 				<tr md-row ng-class-odd="'odd'"
 				ng-repeat="data in hospitalsData | orderBy: query.order | filter: filterByText | limitTo: query.limit : (query.page -1) * query.limit track by $index">
 				<td md-cell><md-checkbox ng-model="data.checkboxValue"
@@ -57,6 +58,7 @@
 </md-content>
 <div layout="column" ng-cloak>
 	<section layout="row" flex>
+		<md-sidenav class="md-sidenav  md-whiteframe-4dp"
 		<md-sidenav class="md-sidenav-right  md-whiteframe-4dp"
 		md-component-id="right"> <md-toolbar
 		class="md-theme-light">

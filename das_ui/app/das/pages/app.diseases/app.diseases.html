@@ -34,7 +34,7 @@
 			</tr>
 		</thead>
 		<tbody md-body>
-			<tr md-row ng-class-odd="'odd'"
+			<tr md-row ng-class-even="'even'"
 				ng-repeat="data in diseasesData | orderBy: query.order | filter: filterByText | limitTo: query.limit : (query.page -1) * query.limit track by $index">
 				<td md-cell><md-checkbox ng-model="data.checkboxValue"
 						ng-click="rowSelect(data)" aria-label="Checkbox 2"
