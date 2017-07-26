@@ -2,15 +2,17 @@
 <form name="doctorCreateForm">
 	<md-input-container class="md-block" flex-gt-sm> <label>Name</label>
 	<input  name="name" ng-model="record.name"  required="required"></md-input-container>
+
 <md-input-container class="md-block" flex-gt-sm> <label>Email</label>
 	<input  name="Email" ng-model="record.email" type="email" required > </md-input-container>
+
 	<md-input-container class="md-block" flex-gt-sm> <label>Phone</label>
-	<input  name="Phone" ng-model="record.phone" required only-digits> </md-input-container>
+	<input  name="Phone" ng-model="record.phone" minlength="8" maxlength="11" only-digits required> </md-input-container>
 
 	<md-input-container class="md-block" flex-gt-sm> <label>Alternate Phone</label>
-	<input  name="Alternate Phone" ng-model="record.alternatePhone" required only-digits> </md-input-container>
-	<md-input-container class="md-block" flex-gt-sm> <label>Department Name</label> 
-	<md-select ng-model="record.departmentId" required 
+	<input  name="Alternate Phone" ng-model="record.alternatePhone" minlength="8" maxlength="11" only-digits> </md-input-container>
+<!-- 	<md-input-container class="md-block" flex-gt-sm> <label>Department Name</label> 
+	<md-select ng-model="record.departmentId" required  -->
 
 	<md-input-container class="md-block" flex-gt-sm> <label>Department Name
 		</label> <md-select ng-model="record.departmentId" required 
@@ -18,20 +20,27 @@
 		ng-repeat="department in departments" ng-value="department.id"
 		ng-selected="department.id === record.departmentId">{{
 	department.departmentName}}</md-option> </md-select> </md-input-container>
-	<md-input-container class="md-block" flex-gt-sm> <label>Specialization
+
+	<md-input-container class="md-block" flex-gt-sm>
+	<label>Specialization</label>
+	<md-select ng-model="record.specializationId" multiple>
+	<md-optgroup>
+	<md-option ng-value="specialization.id" ng-repeat="specialization in specializations">{{specialization.specializationName}}</md-option>
+     </md-optgroup>
+    </md-select>
+    </md-input-container>
+	
+	<!-- <md-input-container class="md-block" flex-gt-sm> <label>Specialization
 		</label> <md-select ng-model="record.specializationId" required ng-change="getAllDepartmentsBySpecializations(record.specializationId)"> <md-option
 		ng-repeat="specialization in specializations" ng-value="specialization.id"
 		ng-selected="specialization.id === record.specializationId">{{
-	 specialization.specializationName}}</md-option> </md-select> </md-input-container>
+	 specialization.specializationName}}</md-option> </md-select> </md-input-container> -->
+
 	 <md-input-container class="md-block" flex-gt-sm> <label>Hospital
 		</label> <md-select ng-model="record.hospitalId" required> <md-option
 		ng-repeat="hospital in hospitals" ng-value="hospital.id"
 		ng-selected="hospital.id === record.hospitalName">{{
 	 hospital.name}}</md-option> </md-select> </md-input-container>
-
-<md-input-container class="md-block"> <label>Date of Birth</label>
-	<input  name="dob" ng-model="record.dob" required type="Date" max="{{currentDate | date: 'yyyy-MM-dd'}}"> </md-input-container>
-
 
 <md-input-container class="md-block"> <label>Date of Birth</label>
 	<input  name="dob" ng-model="record.dob" required type="Date" max="{{currentDate | date: 'yyyy-MM-dd'}}"> </md-input-container>
@@ -43,15 +52,17 @@
         ng-selected="gender.id === record.gender">{{gender.value}}</md-option> </md-select> </md-input-container>
     
 	<md-input-container class="md-block" flex-gt-sm> <label>Rating</label>
-	<input  name="rating" ng-model="record.rating" type="text" required> </md-input-container>
+	<input  name="rating" ng-model="record.rating" type="text" required only-digits> </md-input-container>
+
 
 	<md-input-container class="md-block" flex-gt-sm> <label>Experience</label>
-	<input  name="experience" ng-model="record.experience" required > </md-input-container>
+	<input  name="experience" ng-model="record.experience" required only-digits> </md-input-container>
 
 <md-input-container class="md-block" flex-gt-sm> <label>Master Slot
 		</label> <md-select ng-model="record.masterSlot"> <md-option
-		ng-repeat="masterSlot in masterSlots" ng-value="masterSlot.id"
-		ng-selected="masterSlot.id === record.masterSlot">{{masterSlot.value}}</md-option> </md-select> </md-input-container>
+		ng-repeat="masterSlot in masterSlots" ng-value="masterSlot.value"
+		ng-selected="masterSlot.value === record.masterSlot">{{masterSlot.value}}</md-option> </md-select> </md-input-container>
+		
 	<md-input-container class="md-block"> <label>Description
 		</label> <textarea name="description" ng-model="record.description"></textarea> </md-input-container>	
 

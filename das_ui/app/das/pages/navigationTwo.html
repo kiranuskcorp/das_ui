@@ -4,12 +4,11 @@
         class="md-theme-light">
       <div layout="row" layout-xs="column" layout-sm="column" layout-margin>
     <div flex="80">DAS</div>  
-    
     <i class="material-icons cursor" data-ng-click="toggleNavigationLeft()" >clear</i>  
        <i class="material-icons cursor" ui-sref="app.specialization" data-ng-click="toggleNavigationLeft()">home</i>
          </div>  
       </md-toolbar> 
-       <div ng-repeat="tab in leftTabs" >
+       <div ng-repeat="tab in leftTabTwos" >
         <div class="primaryNavItem"> 
 
        <a ui-sref="{{tab.route}}" ng-model="selected" ng-click="toggleNavigationLeft()" ng-class="{'selectedNavItem': clicked}">{{tab.value}}</a>
@@ -20,5 +19,6 @@
 
 
     </section>
+
 
 

@@ -52,8 +52,8 @@
 			<md-sidenav class="md-sidenav md-whiteframe-4dp"
 				md-component-id="right"> <md-toolbar
 				class="md-theme-light">
-			<h1 class="md-toolbar-tools">Role {{currentPage}}</h1>
-			</md-toolbar> <create-specialization /> </md-sidenav>
+			<h1 class="md-toolbar-tools">Role {{currentPage}} <i class="material-icons" style="margin-left: 400px" ng-click="cancelRecord()">cancel</i></h1>
+			</md-toolbar> <ng-include src="'pages/app.role/app.role.record.html'"></ng-include> </md-sidenav>
 		</section>
 	</div>
 </div>

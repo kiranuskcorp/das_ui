@@ -2,9 +2,7 @@
   window.__env = window.__env || {};
  
   // Base url
-  /*window.__env.baseUrl = 'http://localhost:9011';
-  window.__env.baseUrl = 'http://localhost:9011';*/
-  window.__env.baseUrl = 'http://localhost:9001';
+   window.__env.baseUrl = 'http://localhost:8080';
  
   // context will be prepended to policy2-admin relative paths
   window.__env.context = '/das_rest_service';

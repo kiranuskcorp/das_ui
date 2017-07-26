@@ -1,0 +1,13 @@
+[  
+   {
+      "key":"appointment",
+      "value":"Appointment",
+      "route":"app.appointment"
+   },
+   
+   {  
+      "key":"doctor",
+      "value":"Doctor",
+      "route":"app.doctor"
+   }
+]

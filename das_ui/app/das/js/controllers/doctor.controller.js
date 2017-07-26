@@ -16,6 +16,7 @@ function doctorController($scope, doctorService, Excel, $state, $mdDialog,
 		$scope.currentRoute = $scope.currentState[$scope.currentState.length - 1];
 		$scope.customFullscreen = false;
 		$scope.updatePage = false;
+		
 		$scope.specializationSelected= false;
 		$scope.currentDate = new Date();
 		$scope.clientsData = [];
@@ -24,40 +25,46 @@ function doctorController($scope, doctorService, Excel, $state, $mdDialog,
 		$scope.headerEnable = {};
 		$scope.exportData = [];
 
-		$scope.genders = [{"id":"Male","value":"Male"},{"id":"Female","value":"Female"}];
 		
+		$scope.loading = true;
+		function getAllDoctors(){
+        	doctorService.getAllDoctors().then(function(response) {
+			$scope.doctorsData = response.data;
+			$scope.doctorsLength = response.data.length;
+			$rootScope.currentTableLength = 'Total Doctors:'+response.data.length;
+			$scope.loading = false;
+                });
+				
+        }
+		getAllDoctors();
 
-		
-		$scope.cancelRecord = function(){
-			$mdSidenav('right').close().then(function() {
-				$log.debug("close RIGHT is done");
-			});
-		}		
-				 
 		$scope.record = {
 			"name":"",
 			"email":"",
 			"phone":"",
             "alternatePhone":"",
-			"departmentId":"",
-			"specializationId":"",
-			"hospitalId":"",
-			"dob":"",
-			"gender":"",
+            "dob": "",
+            "gender":"",
 			"rating":"",
 			"experience":"",
 			"masterSlot":"",
-			"description":""
+			"description":"",
+			"hospitalId":"",
+			"departmentId":"",
+			"specializationId":""
+			
 		};
 
-		$scope.loading = true;
+		$scope.genders = [{"id":"Male","value":"Male"},{"id":"Female","value":"Female"},{"id":"Others","value":"Others"}];
 
+            
 		$scope.getAllSpecializationsByDepartmentId = function(department){
             doctorService.getAllSpecializationsByDepartments(department).then(function(response) {
             $scope.specializations = response.data;
         });
 		}
-		doctorService.getAllDepartments().then(function(response) {
+		
+        doctorService.getAllDepartments().then(function(response) {
             $scope.departments = response.data;
         });
         doctorService.getAllStates().then(function(response) {
@@ -69,98 +76,83 @@ function doctorController($scope, doctorService, Excel, $state, $mdDialog,
         doctorService.getAllHospitals().then(function(response) {
 			$scope.hospitals = response.data;
 			
-			});
-       /* doctorService.getAllSpecializations().then(function(response) {
-			$scope.specializations = response.data;
-			});*/
+		});
+       
         doctorService.getAllMasterSlots().then(function(response) {
 			$scope.masterSlots = response.data;
-			});
+		});
+		
+
+	
 		doctorService.getAllDoctors().then(function(response) {
-			console.log(response.data)
-			$scope.doctorsData = response.data;
-			$scope.doctorsLength = response.data.length;
-			$rootScope.currentTableLength = 'Total Records:'+response.data.length;
-			// console.log($scope.tasksData);
-			$scope.doctorsOptions = [ 200 , 300];
-			$scope.doctorPage = {
-				pageSelect : true
-			};
-			$scope.query = {
-				order : 'name',
-				limit : 100,
-				page : 1
-			};
-			$scope.loading = false;
-		}, function(error) {
-	alert("failed");
-					$scope.loading=false;
-		});		
-		var deregisterListener = $rootScope.$on("CallDoctorMethod", function(){
-			if ($rootScope.$$listeners["CallDoctorMethod"].length > 1) {
-				            $rootScope.$$listeners["CallDoctorMethod"].pop();
-
-        		}
-           $scope.toggleRight();
-           $scope.emptyForm();
-        });       
- var deregisterListener = $rootScope.$on("CallDoctorSearchMethod", function(event, args) {
-            if ($rootScope.$$listeners["CallDoctorSearchMethod"].length > 1) {
-                $rootScope.$$listeners["CallDoctorSearchMethod"].pop();
-            }            
-            $scope.filterByText = args.text;
+            $scope.doctorsData = response.data;
+             $rootScope.currentTableLength = 'Records Count :'+response.data.length;
         });
-	}
-	init();
-	$scope.getCitiesByState = function(state){
-		doctorService.getAllCities(state).then(function(response) {
+	
+
+		$scope.getCitiesByState = function(state){
+			doctorService.getAllCities(state).then(function(response) {
             $scope.cities = response.data;
-        });
-	}
+       	 	});
+		}
+		$scope.cancelRecord = function(){
+			$mdSidenav('right').close().then(function() {
+				$log.debug("close RIGHT is done");
+			});
+		}	
+		$scope.saveRecord = function() {
 
-
-
-	$scope.saveRecord = function() {
-			//console.log($scope.record);	
+			$scope.specializationIdToSave = JSON.stringify($scope.record.specializationId);
+			//$scope.availableFacilitiesToSave = JSON.stringify($scope.record.availableFacilities);
+			delete $scope.record.specializationId;
+			$scope.record['specializationId'] = $scope.specializationIdToSave;
 			doctorService.create($scope.record).then(function(response) {
-				//console.log("resp", response);
-			});					
 			$scope.cancelRecord();	
-			   window.location.reload();
-
+			getAllDoctors();
+			$scope.currentPage = 'Create';
+			});
 		}
 		
 		$scope.setRowData = function(row) {
 			$scope.currentPage = 'Update';
 			$scope.rowData = row;
 			$scope.updatePage = true;
+
+			var spec = $scope.rowData.specializationId;
+			var listOfspecializations = spec.split(',');
+			$scope.rowData.specializationId= listOfspecializations;
+			$scope.record['specializationId']=$scope.rowData.specializationId;
+			console.log($scope.rowData.specializationId);
+
 			$scope.getAllSpecializationsByDepartmentId(row.departmentId);
 			$scope.record = {
 			"name":row.name,
 			"email":row.email,
 			"phone":row.phone,
 			"alternatePhone":row.alternatePhone,
-			"departmentId":row.departmentId,
-			"specializationId":row.specializationId,
-			"hospitalId":row.hospitalId,
 			"dob":new Date(row.dob),
 			"gender":row.gender,
 			"rating":row.rating,
 			"experience":row.experience,
 			"masterSlot":row.masterSlot,
 			"description":row.description,
+			"hospitalId":row.hospitalId,
+			"departmentId":row.departmentId,
+			"specializationId":row.specializationId,
 			"id" : row.id			
-		};
+			};
 
 		};
 		$scope.updateRecord = function() {
+
+			$scope.specializationIdToSave = JSON.stringify($scope.record.specializationId);
+			delete $scope.record.specializationId;
+			$scope.record['specializationId'] = $scope.specializationIdToSave;
 			console.log($scope.record);
 			doctorService.update($scope.record).then(function(response) {
-				//console.log("resp", response);
+				getAllDoctors();
+				$scope.cancelRecord();
 			});
-			$scope.cancelRecord();
-			   window.location.reload();
-			$scope.currentPage = 'Create';
 		}
 		$scope.emptyForm = function() {
 			$scope.updatePage = false;
@@ -169,16 +161,20 @@ function doctorController($scope, doctorService, Excel, $state, $mdDialog,
 			"email":"",
 			"phone":"",
             "alternatePhone":"",
-			"departmentId":"",
-			"specializationId":"",
-			"hospitalId":"",
+            "dob":"",
+             "gender":"",
 			"rating":"",
 			"experience":"",
 			"masterSlot":"",
-			"description":""
+			"description":"",
+			"hospitalId":"",
+			"departmentId":"",
+			"specializationId":""
 		};
 			
 		};
+
+		
 
 		$scope.rowSelect = function(row) {
 			$scope.selected.push(row);
@@ -214,14 +210,31 @@ function doctorController($scope, doctorService, Excel, $state, $mdDialog,
 
 				$mdDialog.show(confirm).then(function() {
 						doctorService.deleteRow(row.id).then(function(response) {
+							getAllDoctors();
 			});
-						   window.location.reload();
+						   
 				}, function() {
 					$scope.status = 'You decided to keep your Task.';
 				});
 			
 
 		};
+
+		var deregisterListener = $rootScope.$on("CallDoctorMethod", function(){
+			if ($rootScope.$$listeners["CallDoctorMethod"].length > 1) {
+				            $rootScope.$$listeners["CallDoctorMethod"].pop();
+
+        		}
+        		$scope.currentPage = 'Create';
+           $scope.toggleRight();
+           $scope.emptyForm();
+        });       
+ 		var deregisterListener = $rootScope.$on("CallDoctorSearchMethod", function(event, args) {
+            if ($rootScope.$$listeners["CallDoctorSearchMethod"].length > 1) {
+                $rootScope.$$listeners["CallDoctorSearchMethod"].pop();
+            }            
+             $rootScope.filterByText = args.text;
+        });
 
 		$scope.exportData = function(tableId) {
 			// $scope.tasksOptions = [ $scope.tasksData.length ];
@@ -291,8 +304,8 @@ function doctorController($scope, doctorService, Excel, $state, $mdDialog,
 				});
 			}
 		}
-		/* Side nav ends */
-
+	}	/* Side nav ends */
+init();
 	return self;
 };
 

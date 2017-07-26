@@ -1,6 +1,6 @@
 'use strict';
 dasApplication.factory("appointmentService", appointmentService);
-function appointmentService($http, $window, __env) {
+function appointmentService($http, $window, $filter,__env) {
 	var service = {
 		getAllAppointments:getAllAppointments,
 		getAllTimes:getAllTimes, 
@@ -10,23 +10,24 @@ function appointmentService($http, $window, __env) {
 		getAllHospitalsByDoctor:getAllHospitalsByDoctor,		
 		getAllStates:getAllStates,
 		getAllCities:getAllCities,
-		/*getAllDiseases:getAllDiseases,*/
+		getAllDiseases:getAllDiseases,
 		create:create,
 		update:update,
 		deleteRow:deleteRow
 
 	}, url = __env.baseUrl + __env.context
 	return service;
+   
 	function getAllAppointments() {
 		return $http.get(url + "/appointments/readAll");
 	}
 	function getAllTimes() {
-		return $http.get("./mock/timeConstants.json");
+		return $http.get("./mock/timeSlot.json");
 	}
 	 
-	/*function getAllDiseases() {
+	function getAllDiseases() {
 		return $http.get(url + "/diseases/readAll");
-	}*/
+	}
 	function getAllDoctors() {
 		return $http.get(url + "/doctors/readAll");
 	}
@@ -45,6 +46,9 @@ function appointmentService($http, $window, __env) {
 	function getAllCities() {
 		return $http.get("./mock/cities.json");
 	}
+
+	
+
 
 	 function create(appointmentCreateData) {
 			return $http({

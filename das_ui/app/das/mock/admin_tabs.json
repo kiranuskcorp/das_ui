@@ -1,5 +1,4 @@
 [  
-   
    {
       "key":"appointment",
       "value":"Appointment",
@@ -11,27 +10,10 @@
       "value":"Doctor",
       "route":"app.doctor"
    },
-    {  
-      "key":"hospital",
-      "value":"Hospital",
-      "route":"app.hospital"
-   },
-  
-    {  
+   {  
       "key":"department",
       "value":"Department",
       "route":"app.department"
-   },
-  {  
-      "key":"specialization",
-      "value":"Specialization",
-      "route":"app.specialization"
-   },
-  
-   {  
-      "key":"role",
-      "value":"Role",
-      "route":"app.role"
    },
    {  
       "key":"diseases",
@@ -39,24 +21,27 @@
       "route":"app.diseases"
    },
 
-
     {  
-      "key":"login",
-      "value":"Login",
-      "route":"app.login"
+      "key":"hospital",
+      "value":"Hospital",
+      "route":"app.hospital"
    },
-
-   {  
-      "key":"appointment",
-      "value":"Appointment",
-      "route":"app.appointment"
+     {  
+      "key":"role",
+      "value":"Role",
+      "route":"app.role"
    },
-  
+   
+ 
  {
       "key":"reporting",
       "value":"Reporting",
       "route":"app.reporting"
 
+   },{  
+      "key":"specialization",
+      "value":"Specialization",
+      "route":"app.specialization"
    },
 
    {  

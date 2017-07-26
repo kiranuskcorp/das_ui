@@ -1,4 +1,4 @@
-<div class="flex-fixed" data-id="globalHeaderNode">
+<div class="flex-fixed" data-id="globalHeaderNode"  ng-hide="$state.is('app.login')">
    <header class="global-header-view">
       <nav role="navigation">
          <div class="navigation-canvas">
@@ -7,7 +7,7 @@
                <div class="global-header-left">
                   <!-- <p ng-click="clicked()">click</p> -->
                   <div>
-                     <div class="global-header-item-container" data-ng-click="toggleNavigationLeft()" data-id="leftNode"><span class="global-header-left global-header-item"><button class="global-header-item-button collapse-trigger"><i class="material-icons white">view_headline</i><span class="label company-name text-relative-top" data-id="labelNode">&nbsp; &nbsp; &nbsp; &nbsp;Doctor Appointment System</span></button></span></div>
+                     <div class="global-header-item-container" data-ng-click="toggleNavigationLeft()" data-id="leftNode"><span class="global-header-left global-header-item"><button class="global-header-item-button collapse-trigger"><i class="material-icons white">view_headline</i><span class="label company-name text-relative-center" data-id="labelNode" >&nbsp; &nbsp; &nbsp; &nbsp;Doctor Appointment System</span></button></span></div>
                   </div>
                </div>
                <div class="global-header-toast" style="display: none;">
@@ -30,14 +30,17 @@
                            </button>
                         </span>
                         <span class="global-header-item create" data-id="shell/global-header/create" style="border-left: none !important;">
-                           <button class="global-header-item-button icon-relative-top" data-id="buttonNode" aria-haspopup="true" aria-label="Create">
-                              <i class="material-icons white " ng-click="addRecord()">add_circle</i>
+                           <button class="global-header-item-button icon-relative-top" data-toggle="modal" data-target="#createOrUpdateForm" data-id="buttonNode" aria-haspopup="true" aria-label="Create">
+                           <md-tooltip>  Create    </md-tooltip>
+                              <i class="material-icons white" ng-click="addRecord()" >add_circle</i>
                               <span class="label" data-id="labelNode"></span>
                               <div class="flyout-tip"></div>
                            </button>
                         </span>
-
-
+ <!-- <md-button class="" ng-click=  >
+      <i class="material-icons white" ng-click="showPrompt($event)">add_circle</i>
+    </md-button>
+ -->
 
                      <!--    <span class="global-header-item create" data-id="shell/global-header/create" style="border-left: none !important;">
                            <button class="global-header-item-button icon-relative-top" data-id="buttonNode" aria-haspopup="true" aria-label="Create">
@@ -54,12 +57,13 @@
                            </button>
                         </span> -->
                         <span class="global-header-item search" data-id="shell/global-header/search" accesskey="f" style="border-left: none !important;">
-                           <button class="global-header-item-button icon-relative-top" data-id="buttonNode" aria-haspopup="true" aria-label="Search Transactions">
+                           <button class="global-header-item-button icon-relative-top" data-id="buttonNode" aria-haspopup="true" aria-label="Search Transactions">  <md-tooltip> Search </md-tooltip>
                               <i class="material-icons white"  ng-mouseenter="hoverIn()">search</i>
                               <span class="label" data-id="labelNode"></span>
                               <div class="flyout-tip"></div>
                            </button>
                         </span>
+                      
 
 
                         <span class="global-header-item settings" data-id="shell/global-header/settings" style="border-left: none !important;">
@@ -75,10 +79,12 @@
                               <span class="label" data-id="labelNode"></span>
                               <div class="flyout-tip"></div>
                            </button>
-                        </span>
-                        <md-button><a href="" style="color: white" ng-click="logout()" target="_self">Log Out</a></md-button>
+                        </span>   <span style="color:white">Logged in {{username}}</span>
+                        <md-button>
+                          <md-tooltip> Logout </md-tooltip>
+                        <a href="" ng-controller="logoutController" ng-click="logout()" target="_self"><md-button class="md-raised md-primary"> Logout</md-button></a></md-button>
                     
-
+ 
 
                      </div>
                   </div>
@@ -96,6 +102,7 @@
          <md-input-container class="md-block" ng-show="toggleStart"  ng-mouseleave="hoverOut()"
          > <label>Search</label> <input type="text" data-ng-change="searchRecord(filterTable)" data-ng-model="filterTable" style="width: 250px"> </md-input-container>
       </div>
+
    </div>
    <span><strong style="float: right;margin-right:20px" ng-show="currentDataEnable">{{currentTableLength}}</strong></span>
 </div>

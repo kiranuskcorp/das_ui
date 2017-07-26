@@ -18,10 +18,7 @@ function doctorService($http, $window, __env) {
 	function getAllDoctors() {
 		return $http.get(url+"/doctors/readAll");
 	}
-	
-	/*function getAllSpecializations() {
-		return $http.get(url+"/specializations/readAll");
-	}*/
+		
 	function getAllDepartments() {
 		return $http.get(url+"/departments/readAll");
 	}
@@ -38,7 +35,7 @@ function doctorService($http, $window, __env) {
 		return $http.get("./mock/cities.json");
 	}
 	function getAllMasterSlots(state) {
-		return $http.get("./mock/masterSlot.json");
+		return $http.get("./mock/timeSlot.json");
 	}
 	
 

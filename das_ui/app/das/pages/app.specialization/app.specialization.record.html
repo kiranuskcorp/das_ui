@@ -1,28 +1,45 @@
-<md-content layout-padding>
-<form name="specializationCreateForm">
-	<md-input-container class="md-block"> <label>Name</label>
-	<input  name="name" ng-model="record.specializationName" required> </md-input-container>
-	
-    <md-input-container class="md-block" flex-gt-sm> <label>Department
-    </label> <md-select ng-model="record.departmentId" required> <md-option
-        ng-repeat="department in departments" ng-value="department.id"
-        ng-selected="department.id === record.departmentId">{{
-    department.departmentName}}</md-option> </md-select> </md-input-container>
 
-    <md-input-container class="md-block"> <label>Description</label>
-	<textarea name="description" ng-model="record.description"></textarea> </md-input-container>
+<form name="specializationCreateForm" novalidate ng-controller="specializationController">
+	<div class="row">
+		<div class="col-md-4"> 
+		 	<label>Name<span>*</span></label>
+		</div>
+		<div class="col-md-8"> 
+			<input  name="name" ng-model="record.specializationName" id="specializationName_1" class="form-control" ng-pattern ="/^[a-zA-Z\s]*$/" required> 
+		</div>
+		<div class="col-md-12">Name is required</div>
+	</div>
+	
+   <div class="row">
+	<div class="col-md-4"> 
+	<label>Department<span>*</span></label> 
+	</div>
+	<div class="col-md-8"> 
+		<select ng-model="record.departmentId" class="form-control" required> 
+		<option value="">Select</option>
+		<option ng-repeat="department in departments" ng-value="department.id"
+	        ng-selected="department.id === record.departmentId">{{department.departmentName}}
+	    </option>
+	    </select>
+    </div>
+	</div>
+
+    <div class="row">
+	<div class="col-md-4">   <label>Description</label>
+	</div>
+	<div class="col-md-8"> <textarea name="description" class="form-control" ng-model="record.description"></textarea>
+	</div>
+	</div>
 
 	
-	<md-input-container class="md-block"> <input
-		type="hidden" name="Id" ng-model="record.id"> </md-input-container>
-	
-	</md-input-container>
+<input type="hidden" name="Id" ng-model="record.id"> 
+		
 
-	<md-button class="md-raised md-primary" ng-click="saveRecord()"
+	<!-- <md-button class="md-raised md-primary" ng-click="saveRecord()"
 		ng-hide="updatePage" ng-disabled="specializationCreateForm.$invalid"> Save </md-button>
 	<md-button class="md-raised md-primary" ng-click="updateData()"
 		ng-show="updatePage" ng-disabled="specializationCreateForm.$invalid">Update </md-button>
-	<md-button class="md-raised" ng-click="cancelRecord()" >
-	Cancel </md-button>
+	<md-button class="md-raised" data-ng-click="reset('specializationCreateForm')" >
+	Cancel </md-button> -->
 </form>
-</md-content>
+

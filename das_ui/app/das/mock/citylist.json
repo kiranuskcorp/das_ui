@@ -1,0 +1,5 @@
+[
+        {"Id":1, "city":"Anchorage", "stateId": 1},
+        {"Id":2, "city":"Fairbanks", "stateId": 1}
+        
+    ]

@@ -1,4 +1,5 @@
 <md-content layout-padding>
+
 <form name="userCreateForm">
 	<md-input-container class="md-block"> <label>Name</label>
 	<input  name="name" ng-model="record.name" required> </md-input-container>
@@ -7,10 +8,10 @@
 	<input  name="email" ng-model="record.email" type="email" required> </md-input-container>
 
 	<md-input-container class="md-block"> <label>Phone</label>
-	<input  name="phone" ng-model="record.phone" required> </md-input-container>
+	<input  name="phone" ng-model="record.phone" minlength="8" maxLength="11" only-digits required> </md-input-container>
 
 	<md-input-container class="md-block"> <label>Alternate Phone</label>
-	<input  name="alternatePhone" ng-model="record.alternatePhone"> </md-input-container>
+	<input  name="alternatePhone" ng-model="record.alternatePhone" minlength="8" maxLength="11" only-digits> </md-input-container>
 
 	<!-- <md-input-container class="md-block"> <label>Password</label>
 	<input  name="password" ng-model="record.password"  type="password" required="required"> </md-input-container> -->
@@ -25,29 +26,42 @@
 
 
 	<md-input-container class="md-block" flex-gt-sm> <label>Gender
- </label> <md-select ng-model="record.gender" required> <md-option
+    </label> <md-select ng-model="record.gender" required> <md-option
         ng-repeat="gender in genders" ng-value="gender.value"
         ng-selected="gender.id === record.gender">{{
     gender.value }}</md-option> </md-select> </md-input-container>
 
 	
 	<md-input-container class="md-block"> <label>Address</label>
-	<input  name="address" ng-model="record.address"> </md-input-container>
+	<textarea  name="address" ng-model="record.address"></textarea> </md-input-container>
 	
-	<md-input-container class="md-block" flex-gt-sm> <label>Role
+	<!-- <md-input-container class="md-block" flex-gt-sm> <label>Role
  </label> <md-select ng-model="record.role" required> <md-option
         ng-repeat="role in roles" ng-value="role.value"
         ng-selected="role.id === record.role">{{
-    role.value }}</md-option> </md-select> </md-input-container>
+    role.value }}</md-option> </md-select> </md-input-container> -->
 
 
+ <!-- <md-input-container class="md-block" flex-gt-sm> <label>Role
+		</label> <md-select ng-model="record.roleId" required> <md-option
+		ng-repeat="role in roles" ng-value="role.id"
+		ng-selected="role.id === record.role">{{
+	 user.role}}</md-option> </md-select> </md-input-container> -->
 
-	<md-input-container class="md-block"> <label>Description</label>
-	<textarea name="description" ng-model="record.description"></textarea>
+
+	 <md-input-container class="md-block" flex-gt-sm> <label>Role
+    </label> <md-select ng-model="record.roleId" ng-change="getAllRoles(record.roleId)" required > 
+    <md-option   ng-repeat="role in roles" ng-value="role.id"
+        ng-selected="role.id === record.roleId">{{
+    role.roleName}}</md-option> </md-select> </md-input-container>
+
+
+	<md-input-container class="md-block"> <label>Desc</label>
+	<textarea rows="4" cols="50" name="description" ng-model="record.description"></textarea>
 	
 	</md-input-container>
 
-	<md-button class="md-raised md-primary" ng-click="saveRecord()"
+ 	<md-button class="md-raised md-primary" ng-click="saveRecord()"
 		ng-hide="updatePage" ng-disabled="userCreateForm.$invalid"> Save </md-button>
 	<md-button class="md-raised md-primary" ng-click="updateData()"
 		ng-show="updatePage" ng-disabled="userCreateForm.$invalid">Update </md-button>

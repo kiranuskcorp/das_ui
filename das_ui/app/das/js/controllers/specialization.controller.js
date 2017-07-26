@@ -5,9 +5,29 @@ dasApplication.controller("specializationController", specializationController);
 function specializationController($scope, specializationService, $mdDialog,$rootScope, $mdToast,
         $timeout, $state, $mdSidenav, $log) {
 
+
     var self = {
         init : init
     };
+    /*if(localStorage.getItem( 'loggedInUser') == undefined){
+        $state.go("app.login");
+    }*/
+
+/**
+ * Event-Listner for Back-Button
+ */
+$scope.$on('$locationChangeStart', function(event, next, current){            
+    // Here you can take the control and call your own functions:
+    // Prevent the browser default action (Going back):
+    var path = next.split('/');
+    var result = path[path.length - 1];
+    if(result != "specialization" && result != "login"){
+    event.preventDefault();            
+    }
+});
+
+
+
     function init() {
         // console.log($state.current.name);
          $rootScope.currentController = 'Specialization';
@@ -21,8 +41,10 @@ function specializationController($scope, specializationService, $mdDialog,$root
         $scope.collection = [];
         $scope.selected = [];
         $scope.headerEnable = {};
+        $scope.currentPage = 'Create';
+
         $scope.exportData = [];
-       
+
 
         $scope.record = {
             
@@ -30,13 +52,18 @@ function specializationController($scope, specializationService, $mdDialog,$root
                         "departmentId":"",
                          "description": ""
         };
-            $scope.loading=true;
+        $scope.loading=true;
+          
+        specializationService.getAllDepartment().then(function(response) {
+            $scope.departments = response.data;
+            console.log($scope.departments);
+        });
 
+        function getAllSpecialization(){
             specializationService.getAllSpecialization().then(function(response) {
             $scope.specializationData = response.data;
             $scope.specializationLength = response.data.length;
-            $rootScope.currentTableLength = 'Records Count :'+response.data.length;
-        //  console.log($scope.employeesData);
+            $rootScope.currentTableLength = 'Total Specializations :'+response.data.length;
             $scope.specializationOptions = [ 200,300 ];
             $scope.specializationPage = {
                 pageSelect : true
@@ -47,42 +74,50 @@ function specializationController($scope, specializationService, $mdDialog,$root
                 page : 1
             };
             $scope.loading=false;
-        }, function(error) {
-            alert("failed");
-                    $scope.loading=false;
-        });
+            }, function(error) {
+            $scope.loading=false;
+            });
+        }
 
-        specializationService.getAllDepartment().then(function(response) {
-            
-            $scope.departments = response.data;
-            console.log($scope.departments);
-        });
-        
-         
+
+        getAllSpecialization();
         var deregisterListener = $rootScope.$on("CallSpecializationMethod", function(){
+            $scope.currentPage = "Create";
+            $scope.updatePage = false;
             if ($rootScope.$$listeners["CallSpecializationMethod"].length > 1) {
                             $rootScope.$$listeners["CallSpecializationMethod"].pop();
 
                 }
-           $scope.toggleRight();
-             $scope.emptyForm();
-             $scope.currentPage = "Create";
+            $scope.emptyForm();
+            $scope.openSpecialization();    
            
         });
+
+        $scope.openSpecialization = function(){
+          
+           $timeout(function () {
+                clearForm();
+            }, 300);
+
+        };
+
+    
+
         var deregisterListener = $rootScope.$on("CallSpecializationSearchMethod", function(event, args) {
             if ($rootScope.$$listeners["CallSpecializationSearchMethod"].length > 1) {
                 $rootScope.$$listeners["CallSpecializationSearchMethod"].pop();
             }            
-            $scope.filterByText = args.text;
+            $rootScope.filterByText = args.text;
         });
            
+
         $scope.saveRecord = function() {
             specializationService.create($scope.record).then(function(response) {
-             console.log(response);
-            });
-            $scope.cancelRecord();
-              window.location.reload();
+                $scope.cancelRecord();
+                /*GET update*/
+                getAllSpecialization();
 
+            });
         }
 
 
@@ -98,21 +133,16 @@ function specializationController($scope, specializationService, $mdDialog,$root
                 };
             };
             $scope.updateData = function() {
-               specializationService.update($scope.record).then(function(response) {
+                specializationService.update($scope.record).then(function(response) {
+                    $scope.cancelRecord();
+                     /*GET update*/
+                     $scope.emptyForm();
+                    getAllSpecialization();
+                    $scope.currentPage = 'Create';
                 });
-                $scope.cancelRecord();
-            window.location.reload();
-            $scope.currentPage = 'Create';
             }
              $scope.emptyForm = function() {
-                    $scope.updatePage = false;
-                    $scope.record = {
-                                
-                        "specializationName": "",
-                        "departmentId":"",
-                         "description": ""
-                };
-
+                 $scope.record["specializationName"] =  "";
                 };
                $scope.cancelRecord = function() {
                     $mdSidenav('right').close().then(function() {
@@ -157,8 +187,9 @@ function specializationController($scope, specializationService, $mdDialog,$root
                                 function() {
                                     specializationService.deleteRow(row.id).then(function(response) {
                 
-            });
-                                   window.location.reload();
+            
+                                     getAllSpecialization();
+              });                     //window.location.reload();
                                 },
                                 function() {
                                     $scope.status = 'You decided to keep your Task.';
@@ -167,47 +198,12 @@ function specializationController($scope, specializationService, $mdDialog,$root
     
         };
 
-        /* Side nav starts */
-        $scope.toggleLeft = buildDelayedToggler('left');
-        $scope.toggleRight = buildToggler('right');
-        $scope.isOpenRight = function() {
-            return $mdSidenav('right').isOpen();
-        };
 
-        function debounce(func, wait, context) {
-            var timer;
 
-            return function debounced() {
-                var context = $scope, args = Array.prototype.slice
-                        .call(arguments);
-                $timeout.cancel(timer);
-                timer = $timeout(function() {
-                    timer = undefined;
-                    func.apply(context, args);
-                }, wait || 10);
-            };
-        }
+       
 
-        function buildDelayedToggler(navID) {
-            return debounce(function() {
-                // Component lookup should always be available since we are not
-                // using `ng-if`
-                $mdSidenav(navID).toggle().then(function() {
-                    $log.debug("toggle " + navID + " is done");
-                });
-            }, 200);
-        }
 
-        function buildToggler(navID) {
-
-            return function() {
-                // Component lookup should always be available since we are not
-                // using `ng-if`
-                $mdSidenav(navID).toggle().then(function() {
-                    $log.debug("toggle " + navID + " is done");
-                });
-            }
-        }
+        
         /* Side nav ends */
     }
     init();

@@ -11,7 +11,7 @@
 						class="md-warn md-align-top-left" flex></span></th>
 							<th md-column><span>Name</span></th>
 							<th md-column><span>Email</span></th>
-							<th md-column><span>Password</span></th>
+							<!-- <th md-column><span>Password</span></th> -->
 							<th md-column><span>Phone Number</span></th>
 							<th md-column><span>Alternate Phone</span></th>
 							<th md-column><span>Date Of Birth</span></th>
@@ -38,20 +38,20 @@
 		</thead>
 		<tbody md-body>
 			<tr md-row ng-class-even="'even'"
-				ng-repeat="data in userData | orderBy: query.order | filter: filterByText | limitTo: query.limit : (query.page -1) * query.limit track by $index">
+				ng-repeat="data in userData | limitTo: query.limit : (query.page -1) * query.limit track by $index">
 				<td md-cell><md-checkbox ng-model="data.checkboxValue"
 						ng-click="rowSelect(data)" aria-label="Checkbox 2"
 						ng-true-value="'on'" ng-false-value="'off'"
 						class="md-warn md-align-top-left" flex></td>
-						<td md-cell>{{data.name}}</td>
+				<td md-cell>{{data.name}}</td>
 				<td md-cell>{{data.email}}</td>
-				<td md-cell>{{data.password}}</td>
+				<!-- <td md-cell>{{data.password}}</td> -->
 				<td md-cell>{{data.phone}}</td>
 				<td md-cell>{{data.alternatePhone}}</td>
 				<td md-cell>{{data.dob}}</td>
 				<td md-cell>{{data.gender}}</td>
 				<td md-cell>{{data.address}}</td> 
-				<td md-cell>{{data.role}}</td> 
+				<td md-cell>{{data.roleName}}</td> 
 				<td md-cell><span> <md-tooltip> Update </md-tooltip> <i
 						class="material-icons" ng-click="setRowData(data);toggleRight()"
 						ng-hide="isOpenRight()">border_color</i></span><span><md-tooltip>
@@ -67,8 +67,8 @@
 			<md-sidenav class="md-sidenav md-whiteframe-4dp"
 				md-component-id="right"> <md-toolbar
 				class="md-theme-light">
-			<h1 class="md-toolbar-tools">User {{currentPage}}</h1>
-			</md-toolbar> <create-user /> </md-sidenav>
+			<h1 class="md-toolbar-tools">User {{currentPage}} <i class="material-icons" style="margin-left: 400px" ng-click="cancelRecord()">cancel</i></h1>
+			</md-toolbar> <ng-include src="'pages/app.user/app.user.record.html'"> </md-sidenav>
 		</section>
 	</div>
 </div>

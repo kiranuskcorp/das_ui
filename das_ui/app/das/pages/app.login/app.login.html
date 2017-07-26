@@ -1,26 +1,27 @@
 <div class="container">
     <div class="row" style="margin-top:50px;">
-			<div class="col-md-offset-2 col-md-4" style="border: 2px solid green;"
+			<div class="col-md-offset-2 col-md-4" 
 				ng-show="showLogin">
-				<h2 class="text-center" align="center">Welcome to Doctor Appointment System</h2>
-				<h3 align="center"> Login Form </h3>
+				<h5 class="text-center" align="center">Welcome to Doctor Appointment System</h5>
+				<h5 align="center"> Login Form </h5>
 	<form class="form-horizontal" ng-submit="login()">
 					
-			<div class="group">
- 				   <input type="text" ng-model="user.username" placeholder="Username" required=""><span class="highlight"></span><span class="bar"></span>
+			<div class="group" align="center">
+ 				   <input type="text" ng-model="user.username" placeholder="Username"  required=""><span class="highlight"></span><span class="bar"></span>
   					 
   				</div>
-  			<div class="group">
-  				  <input type="password" ng-model="user.password" placeholder="Password" required=""><span class="highlight"></span><span class="bar"></span>
+  			<div class="group" align="center">
+  				  <input type="password" ng-model="user.password" placeholder="Password"  required=""><span class="highlight"></span><span class="bar"></span>
   					  <label></label>
   			</div>
-		<!-- Button -->
+		<!-- Button --> 
 			<div class="control-group" align="center">
 				<label class="control-label" for="signin"></label>
 				<div class="controls">
-				<md-button type="submit" id="submit" class="btn btn-success"
-									value="Sign In">Sign in
-				</md-button> 
+				<button type="submit"  id="submit" value="Sign In" class="btn btn-success" ng-click="success()">Sign in</button>
+				<!-- <md-button    class="btn btn-success"
+									>Sign in
+				</md-button>  -->
 				</div>
 			</div>
 	

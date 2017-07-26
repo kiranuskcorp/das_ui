@@ -1,12 +1,13 @@
 'use strict';
     dasApplication.factory("logoutService", logoutService);
-    function logoutService(__env,$window) {
+    function logoutService(__env,$window,$location) {
        var service = {
 		        logout: logout
        };
     	  return service;
        function logout() {
-           $window.location.replace(__env.baseUrl+__env.context+__env.logoutPath);
+         $window.localStorage.clear();
+        $location.path('/login');
 		   }
 	    
     }

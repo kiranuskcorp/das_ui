@@ -11,19 +11,28 @@
      </md-optgroup>
     </md-select>
     </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm> <label>Department Name
+
+    <md-input-container class="md-block" flex-gt-sm>
+	<label>Department Name</label>
+	<md-select ng-model="record.departmentId" multiple>
+	<md-optgroup>
+	<md-option ng-value="department.id" ng-repeat="department in departments">{{department.departmentName}}</md-option>
+     </md-optgroup>
+    </md-select>
+    </md-input-container>
+       <!--  <md-input-container class="md-block" flex-gt-sm> <label>Department Name
       </label> <md-select ng-model="record.departmentId"> 
-       <md-option ng-value="department.id" ng-repeat="department in departments" ng-selected="department.id === record.departmentId">{{department.departmentName}}</md-option> </md-select> </md-input-container>
+       <md-option ng-value="department.id" ng-repeat="department in departments" ng-selected="department.id === record.departmentId">{{department.departmentName}}</md-option> </md-select> </md-input-container> -->
 
 
 		<md-input-container class="md-block" flex-gt-sm> <label>Hospital Registration Number</label>
-		<input  name="Alternate Phone" ng-model="record.hospitalRegistrationNumber"  only-digits> </md-input-container>
+		<input  name="Alternate Phone" ng-model="record.hospitalRegistrationNumber"> </md-input-container>
 
 		<md-input-container class="md-block" flex-gt-sm> <label>Hospital Estd.</label>
 		<input  name="Established" ng-model="record.hospitalEstablishmentDate" type="date" max="{{currentDate | date: 'yyyy-MM-dd'}}"></md-input-container>
 
 		<md-input-container class="md-block" flex-gt-sm> <label>Point of Contact</label>
-		<input  name="license" ng-model="record.contact"  > </md-input-container>
+		<input  name="license" ng-model="record.contact" minlength="8" maxlength="11" only-digits> </md-input-container>
 
 		<md-input-container class="md-block" flex-gt-sm> <label>Opening Time
 	</label> <md-select ng-model="record.startTime" > <md-option

@@ -17,6 +17,7 @@ function departmentController($scope, departmentService, $mdDialog,$rootScope, $
         $scope.currentRoute = $scope.currentState[$scope.currentState.length - 1];
         $scope.customFullscreen = false;
         $scope.updatePage = false;
+         $scope.currentPage = 'Create';
         $scope.departmentData = [];
         $scope.collection = [];
         $scope.selected = [];
@@ -32,28 +33,28 @@ function departmentController($scope, departmentService, $mdDialog,$rootScope, $
         };
             $scope.loading=true;
 
-            departmentService.getAllDepartments().then(function(response) {
-            $scope.departmentData = response.data;
-            $scope.departmentLength = response.data.length;
-            $rootScope.currentTableLength = 'Records Count :'+response.data.length;
-        //  console.log($scope.employeesData);
-            $scope.departmentOptions = [ 200,300 ];
-            $scope.departmentPage = {
-                pageSelect : true
-            };
-            $scope.query = {
-                order : 'name',
-                limit : 100,
-                page : 1
-            };
-            $scope.loading=false;
-        }, function(error) {
-            alert("failed");
-                    $scope.loading=false;
-        });
-
-
-        
+             function getAllDepartments(){
+                 departmentService.getAllDepartments().then(function(response) {
+                 $scope.departmentData = response.data;
+                 $scope.departmentLength = response.data.length;
+                 $rootScope.currentTableLength = 'Total Departments :'+response.data.length;
+                 $scope.departmentOptions = [ 200,300 ];
+                 $scope.departmentPage = {
+                     pageSelect : true
+                };
+                 $scope.query = {
+                 order : 'name',
+                 limit : 100,
+                 page : 1
+                };
+                $scope.loading=false;
+                }, function(error) {
+                alert("failed");
+                $scope.loading=false;
+                });
+             }
+             getAllDepartments();
+          
          
         var deregisterListener = $rootScope.$on("CallDepartmentMethod", function(){
             if ($rootScope.$$listeners["CallDepartmentMethod"].length > 1) {
@@ -61,27 +62,27 @@ function departmentController($scope, departmentService, $mdDialog,$rootScope, $
 
                 }
                 $scope.currentPage = 'Create';
-           $scope.toggleRight();
-           $scope.emptyForm();
+                  $scope.toggleRight();
+                  $scope.emptyForm();
          
         });
  var deregisterListener = $rootScope.$on("CallDepartmentSearchMethod", function(event, args) {
             if ($rootScope.$$listeners["CallDepartmentSearchMethod"].length > 1) {
                 $rootScope.$$listeners["CallDepartmentSearchMethod"].pop();
             }            
-            $scope.filterByText = args.text;
+            $rootScope.filterByText = args.text;
         });
            
- $scope.saveRecord = function() {
-    console.log($scope.record);
+        $scope.saveRecord = function() {
             departmentService.create($scope.record).then(function(response) {
-             console.log(response);
+                 $scope.cancelRecord();
+                 getAllDepartments();
+
             });
-            $scope.cancelRecord();
-              window.location.reload();
         }
-         $scope.setRowData = function(row) {
-                //console.log(row);
+
+
+        $scope.setRowData = function(row) {
                 $scope.updatePage = true;
                 $scope.currentPage = 'Update';
                 $scope.record = {
@@ -92,10 +93,11 @@ function departmentController($scope, departmentService, $mdDialog,$rootScope, $
             };
             $scope.updateData = function() {
                departmentService.update($scope.record).then(function(response) {
-                });
+                
                 $scope.cancelRecord();
-                   window.location.reload();
-                    $scope.currentPage = 'Create';
+                getAllDepartments();
+                 $scope.currentPage = 'Create';
+                 });
             }
              $scope.emptyForm = function() {
                     $scope.updatePage = false;
@@ -147,9 +149,10 @@ function departmentController($scope, departmentService, $mdDialog,$rootScope, $
                         .then(
                                 function() {
                                     departmentService.deleteRow(row.id).then(function(response) {
-                
-            });
-                                   window.location.reload();
+                                     getAllDepartments();
+                });
+
+                                   //window.location.reload();
                                 },
                                 function() {
                                     $scope.status = 'You decided to keep your Task.';

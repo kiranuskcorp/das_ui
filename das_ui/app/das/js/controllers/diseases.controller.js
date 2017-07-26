@@ -17,6 +17,7 @@ function diseasesController($scope, diseasesService, $mdDialog,$rootScope, $mdTo
         $scope.currentRoute = $scope.currentState[$scope.currentState.length - 1];
         $scope.customFullscreen = false;
         $scope.updatePage = false;
+         $scope.currentPage = 'Create';
         $scope.diseasesData = [];
         $scope.collection = [];
         $scope.selected = [];
@@ -31,13 +32,13 @@ function diseasesController($scope, diseasesService, $mdDialog,$rootScope, $mdTo
                         "createdDate":"",
                         "description":""
                                 };
-            $scope.loading=true;
+        $scope.loading=true;
 
+        function getAllDiseases(){
             diseasesService.getAllDiseases().then(function(response) {
             $scope.diseasesData = response.data;
             $scope.diseasesLength = response.data.length;
-            $rootScope.currentTableLength = 'Records Count :'+response.data.length;
-        //  console.log($scope.employeesData);
+            $rootScope.currentTableLength = 'Total Diseases :'+response.data.length;
             $scope.diseasesOptions = [ 200,300 ];
             $scope.diseasesPage = {
                 pageSelect : true
@@ -48,10 +49,12 @@ function diseasesController($scope, diseasesService, $mdDialog,$rootScope, $mdTo
                 page : 1
             };
             $scope.loading=false;
-        }, function(error) {
+            }, function(error) {
             alert("failed");
                     $scope.loading=false;
-        });
+            });
+        }
+        getAllDiseases();
 
            
 
@@ -69,16 +72,14 @@ function diseasesController($scope, diseasesService, $mdDialog,$rootScope, $mdTo
             if ($rootScope.$$listeners["CallDiseasesSearchMethod"].length > 1) {
                 $rootScope.$$listeners["CallDiseasesSearchMethod"].pop();
             }            
-            $scope.filterByText = args.text;
+            $rootScope.filterByText = args.text;
         });
            
         $scope.saveRecord = function() {
             diseasesService.create($scope.record).then(function(response) {
-             console.log(response);
-            });
-            $scope.cancelRecord();
-              window.location.reload();
-
+              $scope.cancelRecord();
+              getAllDiseases();
+              });
         }
 
 
@@ -121,11 +122,11 @@ function diseasesController($scope, diseasesService, $mdDialog,$rootScope, $mdTo
                 };
             };
             $scope.updateData = function() {
-               diseasesService.update($scope.record).then(function(response) {
+                diseasesService.update($scope.record).then(function(response) {
+                   $scope.cancelRecord();
+                   $scope.currentPage = 'Create';
+                   getAllDiseases();
                 });
-                $scope.cancelRecord();
-            window.location.reload();
-            $scope.currentPage = 'Create';
             }
              $scope.emptyForm = function() {
                     $scope.updatePage = false;
@@ -181,9 +182,9 @@ function diseasesController($scope, diseasesService, $mdDialog,$rootScope, $mdTo
                         .then(
                                 function() {
                                    diseasesService.deleteRow(row.id).then(function(response) {
-                
+                                    getAllDiseases();
             });
-                                   window.location.reload();
+                                   
                                 },
                                 function() {
                                     $scope.status = 'You decided to keep your Task.';

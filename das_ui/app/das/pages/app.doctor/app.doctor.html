@@ -17,16 +17,16 @@
 						aria-label="Checkbox 2" ng-click="selectAll()"
 						ng-true-value="'on'" ng-false-value="'off'"
 						class="md-warn md-align-top-left" flex></span></th>
-				<th md-column ><span>Name</span></th>
+				<th md-column width=10%><span>Name</span></th>
 				<th md-column ><span>Phone</span></th>
 				<th md-column ><span>Alternate Phone</span></th>
 				<th md-column ><span>Email</span></th>
-				<th md-column ><span>Department</span></th>
+				<!-- <th md-column ><span>Address</span></th>
+				 --><th md-column ><span>Department</span></th>
 				<th md-column ><span>Specialization</span></th>
 				<th md-column ><span>Hospital</span></th>
 				<th md-column ><span>Experience</span></th>
 				<th md-column ><span>Rating</span></th>
-
 				<th md-column>Actions</th>
 			</tr>
 		</thead>
@@ -41,17 +41,16 @@
 				<td md-cell >{{data.phone}}</td>
 				<td md-cell >{{data.alternatePhone}}</td>
 				<td md-cell >{{data.email}}</td>
-				<td md-cell >{{data.departmentName}}</td>
+				<!-- <td md-cell >{{data.address}}</td>
+				 --><td md-cell >{{data.departmentName}}</td>
 				<td md-cell >{{data.specializationName}}</td>
 				<td md-cell >{{data.hospitalName}}</td>
 				<td md-cell >{{data.experience}}</td>
 				<td md-cell >{{data.rating}}</td>
-				
-					<td md-cell width="100"><span> <md-tooltip> Update </md-tooltip> <i
+				<td md-cell><span> <md-tooltip> Update </md-tooltip> <i
 						class="material-icons cursor" ng-click="setRowData(data);toggleRight()"
 						ng-hide="isOpenRight()">border_color</i></span><span><md-tooltip>
-						Delete </md-tooltip> <i class="material-icons cursor" ng-click="deleteRow($event,data)">delete_forever</i></span> <span><md-tooltip>
-						{{data.description}} </md-tooltip> <i class="material-icons cursor">description</i>
+						Delete </md-tooltip> <i class="material-icons cursor" ng-click="deleteRow($event,data)">delete_forever</i></span> <span><md-tooltip>{{data.description}} </md-tooltip> <i class="material-icons cursor">description</i>
 						</span></td>
 		</tr>
 		</tbody>
@@ -64,7 +63,7 @@
 			<md-sidenav class="md-sidenav  md-whiteframe-4dp"
 				md-component-id="right"> <md-toolbar
 				class="md-theme-light">
-			<h1 class="md-toolbar-tools">Doctor {{currentPage}}</h1>
+			<h1 class="md-toolbar-tools">Doctor {{currentPage}} <i class="material-icons" style="margin-left: 370px" ng-click="cancelRecord()">cancel</i></h1>
 			</md-toolbar> <ng-include src="'pages/app.doctor/app.doctor.record.html'"></ng-include> </md-sidenav>
 		</section>
 	</div>

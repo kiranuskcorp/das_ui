@@ -18,13 +18,14 @@ function userController($scope, userService, $mdDialog,$rootScope, $mdToast,
         $scope.customFullscreen = false;
         $scope.updatePage = false;
         $scope.validatePswd = true;
+         $scope.currentPage = 'Create';
         $scope.userData = [];
         $scope.collection = [];
         $scope.selected = [];
         $scope.headerEnable = {};
           $scope.currentDate = new Date();
          
-          $scope.genders = [{"id":"Male","value":"Male"},{"id":"Female","value":"Female"}];
+          $scope.genders = [{"id":"Male","value":"Male"},{"id":"Female","value":"Female"},{"id":"Others","value":"Others"}];
           $scope.roles = [{"id":"Admin","value":"Admin"},{"id":"Doctor","value":"Doctor"},{"id":"DE Operator","value":"DE Operator"}];
           
         $scope.exportData = [];
@@ -37,7 +38,7 @@ function userController($scope, userService, $mdDialog,$rootScope, $mdToast,
                         "phone": "",
                         "alternatePhone": "",
                         "dob": "",
-                        "genderId": "",
+                        "gender": "",
                         "address": "",
                         "roleId": "",
                         "description": ""
@@ -45,11 +46,11 @@ function userController($scope, userService, $mdDialog,$rootScope, $mdToast,
         };
             $scope.loading=true;
 
+        function getAllUsers(){
             userService.getAllUsers().then(function(response) {
             $scope.userData = response.data;
             $scope.userLength = response.data.length;
-            $rootScope.currentTableLength = 'Records Count :'+response.data.length;
-        //  console.log($scope.employeesData);
+            $rootScope.currentTableLength = 'Total Users :'+response.data.length;
             $scope.userOptions = [ 200,300 ];
             $scope.userPage = {
                 pageSelect : true
@@ -63,6 +64,13 @@ function userController($scope, userService, $mdDialog,$rootScope, $mdToast,
         }, function(error) {
             alert("failed");
                     $scope.loading=false;
+        });
+            }
+          getAllUsers();
+
+
+        userService.getAllRoles().then(function(response) {
+            $scope.roles = response.data;
         });
 
 /*
@@ -90,16 +98,18 @@ function userController($scope, userService, $mdDialog,$rootScope, $mdToast,
             if ($rootScope.$$listeners["CallUserSearchMethod"].length > 1) {
                 $rootScope.$$listeners["CallUserSearchMethod"].pop();
             }            
-            $scope.filterByText = args.text;
+            $rootScope.filterByText = args.text;
         });
+           
+
            
 
         $scope.saveRecord = function() {
             userService.create($scope.record).then(function(response) {
-             console.log(response);
-            });
+                console.log(response);
             $scope.cancelRecord();
-              window.location.reload();
+            getAllUsers();
+            });
         }
 
 
@@ -116,7 +126,7 @@ function userController($scope, userService, $mdDialog,$rootScope, $mdToast,
                         "gender": row.gender,
                         "address": row.address,
                         "password":row.password,
-                        "role": row.role,
+                        "roleId": row.roleId,
                         "description": row.description,
                              "id":row.id
                 };
@@ -124,10 +134,11 @@ function userController($scope, userService, $mdDialog,$rootScope, $mdToast,
 
             $scope.updateData = function() {
                userService.update($scope.record).then(function(response) {
-                });
-                $scope.cancelRecord();
-                   window.location.reload();
+               
+               $scope.cancelRecord();
+                getAllUsers();
                     $scope.currentPage = 'Create';
+                     }); 
             }
 
              $scope.emptyForm = function() {
@@ -189,9 +200,8 @@ function userController($scope, userService, $mdDialog,$rootScope, $mdToast,
                         .then(
                                 function() {
                                     userService.deleteRow(row.id).then(function(response) {
-                
+                    getAllUsers();
             });
-                                   window.location.reload();
                                 },
                                 function() {
                                     $scope.status = 'You decided to keep your Task.';
@@ -199,8 +209,6 @@ function userController($scope, userService, $mdDialog,$rootScope, $mdToast,
             
     
         };
-
-        
        
         /* Side nav starts */
         $scope.toggleLeft = buildDelayedToggler('left');

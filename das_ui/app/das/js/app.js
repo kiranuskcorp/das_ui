@@ -41,6 +41,7 @@
         .config(['$locationProvider', '$stateProvider', '$urlRouterProvider',
             function($locationProvider, $stateProvider, $urlRouterProvider) {
                 //$locationProvider.html5Mode(true);
+                // $locationProvider.hashPrefix('!');
                  $stateProvider
                     .state('app', {
                         url: '',
@@ -57,7 +58,19 @@
                                 controller: "leftNavController",
                                 controllerAs: 'self'
 
-                            }
+                            }/*,
+                            'navbar': {
+                                templateUrl: 'pages/navigationTwo.html',
+                                controller: "leftNavController",
+                                controllerAs: 'self'
+
+                            },
+                            'navbar': {
+                                templateUrl: 'pages/navigationThree.html',
+                                controller: "leftNavController",
+                                controllerAs: 'self'
+
+                            }*/
                         }
                     });
                          $stateProvider
@@ -183,12 +196,9 @@
                             }
                         }
                     });
-                   
 
-                $urlRouterProvider.otherwise("/hospital");
-
-
-                $stateProvider
+              /*  $urlRouterProvider.otherwise("/hospital");*/
+               $stateProvider
                     .state('app.login', {
                         name: "login",
                         url: "/login",
@@ -204,7 +214,7 @@
                    
 
                 $urlRouterProvider.otherwise("/login");
-
+                 
             }
         ]);
 

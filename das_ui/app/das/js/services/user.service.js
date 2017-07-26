@@ -6,6 +6,7 @@
 
 		var service = {
 		       getAllUsers: getAllUsers,
+		       getAllRoles: getAllRoles,
 		       create:create,
 		       update:update,
 		       deleteRow:deleteRow
@@ -16,6 +17,13 @@
     			return $http.get(url + "/users/readAll");
     		}
     	
+
+    	 function getAllRoles(){
+    			return $http.get(url + "/roles/readAll");
+    		}
+    	
+
+
     	 function create(jsonData) {
 				return $http({
 					url : url + '/users/create',

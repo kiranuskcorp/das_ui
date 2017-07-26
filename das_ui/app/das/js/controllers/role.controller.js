@@ -17,6 +17,7 @@ function roleController($scope, roleService, $mdDialog,$rootScope, $mdToast,
         $scope.currentRoute = $scope.currentState[$scope.currentState.length - 1];
         $scope.customFullscreen = false;
         $scope.updatePage = false;
+         $scope.currentPage = 'Create';
         $scope.roleData = [];
         $scope.collection = [];
         $scope.selected = [];
@@ -31,12 +32,11 @@ function roleController($scope, roleService, $mdDialog,$rootScope, $mdToast,
                         "description":""
                                 };
             $scope.loading=true;
-
-            roleService.getAllRoles().then(function(response) {
+        function getAllRoles(){
+             roleService.getAllRoles().then(function(response) {
             $scope.roleData = response.data;
             $scope.roleLength = response.data.length;
-            $rootScope.currentTableLength = 'Records Count :'+response.data.length;
-        //  console.log($scope.employeesData);
+            $rootScope.currentTableLength = 'Total Roles :'+response.data.length;
             $scope.roleOptions = [ 200,300 ];
             $scope.rolePage = {
                 pageSelect : true
@@ -47,11 +47,13 @@ function roleController($scope, roleService, $mdDialog,$rootScope, $mdToast,
                 page : 1
             };
             $scope.loading=false;
-        }, function(error) {
+            }, function(error) {
             alert("failed");
                     $scope.loading=false;
-        });
+           });
 
+        }
+           getAllRoles();
         var deregisterListener = $rootScope.$on("CallRoleMethod", function(){
             if ($rootScope.$$listeners["CallRoleMethod"].length > 1) {
                             $rootScope.$$listeners["CallRoleMethod"].pop();
@@ -66,16 +68,14 @@ function roleController($scope, roleService, $mdDialog,$rootScope, $mdToast,
             if ($rootScope.$$listeners["CallRoleSearchMethod"].length > 1) {
                 $rootScope.$$listeners["CallRoleSearchMethod"].pop();
             }            
-            $scope.filterByText = args.text;
+            $rootScope.filterByText = args.text;
         });
            
         $scope.saveRecord = function() {
             roleService.create($scope.record).then(function(response) {
-             console.log(response);
-            });
             $scope.cancelRecord();
-              window.location.reload();
-
+            getAllRoles();
+             });
         }
 
 
@@ -92,11 +92,12 @@ function roleController($scope, roleService, $mdDialog,$rootScope, $mdToast,
             };
             $scope.updateData = function() {
                roleService.update($scope.record).then(function(response) {
-                });
+             
                 $scope.cancelRecord();
-            window.location.reload();
             $scope.currentPage = 'Create';
-            }
+            getAllRoles();
+               });
+                }
              $scope.emptyForm = function() {
                     $scope.updatePage = false;
                     $scope.record = {
@@ -153,9 +154,9 @@ function roleController($scope, roleService, $mdDialog,$rootScope, $mdToast,
                         .then(
                                 function() {
                                     roleService.deleteRow(row.id).then(function(response) {
+                                        getAllRoles();
                 
             });
-                                   window.location.reload();
                                 },
                                 function() {
                                     $scope.status = 'You decided to keep your Task.';

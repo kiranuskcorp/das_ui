@@ -17,9 +17,11 @@ function reportingController($scope, reportingService, Excel, $state, $mdDialog,
 		$scope.customFullscreen = false;
 		$scope.updatePage = false;
 		$scope.clientsData = [];
+		
 		$scope.collection = [];
 		$scope.selected = [];
 		$scope.headerEnable = {};
+
 		$scope.exportData = [];
 		
 
@@ -70,7 +72,7 @@ function reportingController($scope, reportingService, Excel, $state, $mdDialog,
             if ($rootScope.$$listeners["CallReportingSearchMethod"].length > 1) {
                 $rootScope.$$listeners["CallReportingSearchMethod"].pop();
             }            
-            $scope.filterByText = args.text;
+            $rootScope.filterByText = args.text;
         });
 	}
 	init();
@@ -80,19 +82,23 @@ function reportingController($scope, reportingService, Excel, $state, $mdDialog,
         });
 	}
 
-
+   $scope.record = {
+            "doctorId":"",
+			"fromDate":"",
+			"toDate":""	
+		}
 
 	$scope.saveRecord = function() {
 
-$scope.fromDate = $scope.record.fromDate;
-delete $scope.record.fromDate;
-		$scope.convert= function(str) {
-    var date = new Date(str),
-        mnth = ("0" + (date.getMonth()+1)).slice(-2),
-        day  = ("0" + date.getDate()).slice(-2);
-        var fromDate = [ date.getFullYear(), mnth, day ].join("-");
-        $scope.fromDate= fromDate;
-        $scope.record.fromDate=$scope.fromDate;   
+			$scope.fromDate = $scope.record.fromDate;
+			delete $scope.record.fromDate;
+			$scope.convert= function(str) {
+    		var date = new Date(str),
+        	mnth = ("0" + (date.getMonth()+1)).slice(-2),
+        	day  = ("0" + date.getDate()).slice(-2);
+        	var fromDate = [ date.getFullYear(), mnth, day ].join("-");
+        	$scope.fromDate= fromDate;
+        	$scope.record.fromDate=$scope.fromDate;   
     }
 $scope.convert($scope.fromDate);
 $scope.toDate = $scope.record.toDate;
@@ -111,6 +117,8 @@ $scope.convert($scope.toDate);
 				
 			reportingService.create($scope.record).then(function(response) {
 				  $scope.reportingsData = response.data;
+				  $scope.reportingsLength = response.data.length;
+			$rootScope.currentTableLength = 'Total Reportings:'+response.data.length;
 				console.log("$scope.reportingsData",$scope.reportingsData);
 			});					
 			$scope.cancelRecord();	

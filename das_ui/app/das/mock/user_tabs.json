@@ -1,0 +1,42 @@
+[  
+   {
+      "key":"appointment",
+      "value":"Appointment",
+      "route":"app.appointment"
+   },
+   
+   {  
+      "key":"doctor",
+      "value":"Doctor",
+      "route":"app.doctor"
+   },
+   {  
+      "key":"department",
+      "value":"Department",
+      "route":"app.department"
+   },
+   {  
+      "key":"diseases",
+      "value":"Diseases",
+      "route":"app.diseases"
+   },
+
+    {  
+      "key":"hospital",
+      "value":"Hospital",
+      "route":"app.hospital"
+   },
+    
+   
+ 
+ {
+      "key":"reporting",
+      "value":"Reporting",
+      "route":"app.reporting"
+
+   },{  
+      "key":"specialization",
+      "value":"Specialization",
+      "route":"app.specialization"
+   } 
+]

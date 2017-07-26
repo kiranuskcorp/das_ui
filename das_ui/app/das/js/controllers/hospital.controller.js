@@ -26,14 +26,31 @@ function hospitalController($scope, hospitalService, Excel, $state, $mdDialog,
 			
 		};
 
-		
-		$scope.cancelRecord = function(){
-			$mdSidenav('right').close().then(function() {
-				$log.debug("close RIGHT is done");
-			});
-		}	
-		
 		$scope.loading = true;
+		function getAllHospitals(){
+        	hospitalService.getAllHospitals().then(function(response) {
+			$scope.hospitalsData = response.data;
+			$scope.hospitalsLength = response.data.length;
+			$rootScope.currentTableLength = 'Total Hospitals:'+response.data.length;
+			$scope.loading = false;
+			}); 
+        }
+		getAllHospitals();	
+
+		$scope.record = {
+			"name": "",
+			"availableFacilities": "",
+			"departmentId": "",
+			"hospitalRegistrationNumber":"",
+			"hospitalEstablishmentDate":"",
+			"contact": "",
+			"area": "",
+			"district": "",
+			"state": "",
+			"startTime":"",
+			"endTime":"",
+			"description": ""
+		};
 
 		hospitalService.getAllDepartments().then(function(response) {
             $scope.departments = response.data;
@@ -48,65 +65,37 @@ function hospitalController($scope, hospitalService, Excel, $state, $mdDialog,
         hospitalService.getAllTimes().then(function(response) {
             $scope.times = response.data;
         });
+
 		hospitalService.getAllHospitals().then(function(response) {
-			console.log(response.data);
-			$scope.hospitalsData = response.data;
-			$scope.hospitalsLength = response.data.length;
-			$rootScope.currentTableLength = 'Total Records:'+response.data.length;
-			// console.log($scope.tasksData);
-			$scope.hospitalsOptions = [ 200 , 300];
-			$scope.hospitalPage = {
-				pageSelect : true
-			};
-			$scope.query = {
-				order : 'name',
-				limit : 100,
-				page : 1
-			};
-			$scope.loading = false;
-		}, function(error) {
-				alert("failed");
-					$scope.loading=false;
-		});		
-		var deregisterListener = $rootScope.$on("CallHospitalMethod", function(){
-			if ($rootScope.$$listeners["CallHospitalMethod"].length > 1) {
-				            $rootScope.$$listeners["CallHospitalMethod"].pop();
+				console.log(response.data);
+				$scope.hospitalsData = response.data;
+				$scope.hospitalsLength = response.data.length;
+				$rootScope.currentTableLength = 'Total Records:'+response.data.length;
+		});
 
-        		}
-           $scope.toggleRight();
-           $scope.emptyForm();
-        });       
- 		var deregisterListener = $rootScope.$on("CallHospitalSearchMethod", function(event, args) {
-            if ($rootScope.$$listeners["CallHospitalSearchMethod"].length > 1) {
-                $rootScope.$$listeners["CallHospitalSearchMethod"].pop();
-            }            
-            $scope.filterByText = args.text;
-        });
-	}
-	init();
-
-	$scope.getCitiesByState = function(state){
-		hospitalService.getAllCities(state).then(function(response) {
-            $scope.cities = response.data;
-        });
-
-	}
-
-
-
+		$scope.getCitiesByState = function(state){
+				hospitalService.getAllCities(state).then(function(response) {
+		            $scope.cities = response.data;
+		        });
+		}
+		$scope.cancelRecord = function(){
+			$mdSidenav('right').close().then(function() {
+				$log.debug("close RIGHT is done");
+			});
+		}	
 		$scope.saveRecord = function() {
 			$scope.availableFacilitiesToSave = JSON.stringify($scope.record.availableFacilities);
-			$scope.availableFacilitiesToSave = JSON.stringify($scope.record.availableFacilities);
-			//$scope.departmentIdToSave = JSON.stringify($scope.record.departmentId);
+			//$scope.availableFacilitiesToSave = JSON.stringify($scope.record.availableFacilities);
 			delete $scope.record.availableFacilities;
-			//delete $scope.record.departmentId;
 			$scope.record['availableFacilities'] = $scope.availableFacilitiesToSave;
-			//$scope.record['departmentId'] = $scope.departmentIdToSave;
-			console.log($scope.record);	
-				hospitalService.create($scope.record).then(function(response) {
-       			 });
-       			 $scope.cancelRecord();	
-			   window.location.reload();
+			$scope.departmentIdToSave = JSON.stringify($scope.record.departmentId);
+			//$scope.availableFacilitiesToSave = JSON.stringify($scope.record.availableFacilities);
+			delete $scope.record.departmentId;
+			$scope.record['departmentId'] = $scope.departmentIdToSave;
+			hospitalService.create($scope.record).then(function(response) {
+			$scope.cancelRecord();	
+			getAllHospitals();
+       		});
 		}
 	
 		$scope.setRowData = function(row) {
@@ -115,45 +104,49 @@ function hospitalController($scope, hospitalService, Excel, $state, $mdDialog,
 			$scope.updatePage = true;
 			var string = $scope.rowData.availableFacilities;
 			var array = string.split(',');
-			$scope.rowData.availableFacilities=array;
+			$scope.rowData.availableFacilities= array;
 			$scope.record['availableFacilities']=$scope.rowData.availableFacilities;
 			console.log($scope.rowData.availableFacilities);
 
+			var dept = $scope.rowData.departmentId;
+			var listOfDepartments = dept.split(',');
+			$scope.rowData.departmentId= listOfDepartments;
+			$scope.record['departmentId']=$scope.rowData.departmentId;
+			console.log($scope.rowData.departmentId);
 
-			$scope.record = {
-			"name": row.name,
-			"availableFacilities": row.availableFacilities,
-			"departmentId": row.departmentId,
-			"hospitalRegistrationNumber":row.hospitalRegistrationNumber,
-			"hospitalEstablishmentDate":new Date(row.hospitalEstablishmentDate),
-			"contact": row.contact,
-			"area": row.area,
-			"district": row.district,
-			"state": row.state,
-			"startTime":row.startTime,
-			"endTime":row.endTime,
-			"description": row.description,
-			 "id": row.id
+
+		$scope.record = {
+					"name": row.name,
+					"availableFacilities": row.availableFacilities,
+					"departmentId": row.departmentId,
+					"hospitalRegistrationNumber":row.hospitalRegistrationNumber,
+					"hospitalEstablishmentDate":new Date(row.hospitalEstablishmentDate),
+					"contact": row.contact,
+					"area": row.area,
+					"district": row.district,
+					"state": row.state,
+					"startTime":row.startTime,
+					"endTime":row.endTime,
+					"description": row.description,
+					 "id": row.id
 			};
 
 		};
 		$scope.updateRecord = function() {
 
 			$scope.availableFacilitiesToSave = JSON.stringify($scope.record.availableFacilities);
-			$scope.availableFacilitiesToSave = JSON.stringify($scope.record.availableFacilities);
-			//$scope.departmentIdToSave = JSON.stringify($scope.record.departmentId);
+		//	$scope.availableFacilitiesToSave = JSON.stringify($scope.record.availableFacilities);
 			delete $scope.record.availableFacilities;
-			//delete $scope.record.departmentId;
 			$scope.record['availableFacilities'] = $scope.availableFacilitiesToSave;
-
-			console.log($scope.record);
-			hospitalService.update($scope.record).then(function(response) {
+			$scope.departmentIdToSave = JSON.stringify($scope.record.departmentId);
+			delete $scope.record.departmentId;
+			$scope.record['departmentId'] = $scope.departmentIdToSave;
+		    hospitalService.update($scope.record).then(function(response) {
+				getAllHospitals();
+				 $scope.cancelRecord();	
        			 });
-       			 $scope.cancelRecord();	
-			   window.location.reload();
-			
-		}
-		$scope.emptyForm = function() {
+			}
+			$scope.emptyForm = function() {
 			$scope.updatePage = false;
 			$scope.record = {
 			"name": "",
@@ -207,14 +200,31 @@ function hospitalController($scope, hospitalService, Excel, $state, $mdDialog,
 
 				$mdDialog.show(confirm).then(function() {
 						hospitalService.deleteRow(row.id).then(function(response) {
+							getAllHospitals();
 			});
-						   window.location.reload();
 				}, function() {
 					$scope.status = 'You decided to keep your Task.';
 				});
 			
 
 		};
+
+		var deregisterListener = $rootScope.$on("CallHospitalMethod", function(){
+			if ($rootScope.$$listeners["CallHospitalMethod"].length > 1) {
+				            $rootScope.$$listeners["CallHospitalMethod"].pop();
+
+        		}
+            $scope.toggleRight();
+            $scope.emptyForm();
+        });       
+ 		var deregisterListener = $rootScope.$on("CallHospitalSearchMethod", function(event, args) {
+            if ($rootScope.$$listeners["CallHospitalSearchMethod"].length > 1) {
+                $rootScope.$$listeners["CallHospitalSearchMethod"].pop();
+            }            
+            $rootScope.filterByText = args.text;
+        	});
+		}
+		init();
 
 		$scope.exportData = function(tableId) {
 			// $scope.tasksOptions = [ $scope.tasksData.length ];

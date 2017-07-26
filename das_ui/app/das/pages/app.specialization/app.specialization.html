@@ -4,6 +4,7 @@
 	</div>
 	 
 	<md-content layout="column" flex> <md-table-container>
+
 	<table md-table id="specializationTable">
 		<thead md-head md-order="query.order">
 			<tr md-row ng-class-odd="'tableHead'">
@@ -11,11 +12,9 @@
 				 aria-label="Checkbox 2"
 						ng-true-value="'on'" ng-false-value="'off'"
 						class="md-warn md-align-top-left" flex></span></th>
-				<th md-column><span>Name</span></th>
-			
+				 <th md-column><span>Name</span></th>
 				 <th md-column><span>Department</span></th>
 				 <th md-column><span>Description</span></th>
-
 				<th md-column>Actions 
 
 				<md-menu class=" headerMore cursor">
@@ -43,7 +42,6 @@
 						ng-true-value="'on'" ng-false-value="'off'"
 						class="md-warn md-align-top-left" flex></td>
 				<td md-cell>{{data.specializationName}}</td>
-			
 				<td md-cell>{{data.departmentName}}</td>
 				<td md-cell>{{data.description}}</td>
 		
@@ -59,11 +57,80 @@
 
 	<div layout="column" ng-cloak>
 		<section layout="row" flex>
-			<md-sidenav class="md-sidenav md-whiteframe-4dp"
-				md-component-id="right"> <md-toolbar
+		<!-- Model Start -->
+
+				<div class="modal fade" tabindex="-1" role="dialog" id="createOrUpdateForm">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title">Specialization {{currentPage}}</h4>
+				      </div>
+				      <div class="modal-body">
+				       	
+<form name="specializationCreateForm" novalidate ng-controller="specializationController">
+	<div class="row">
+		<div class="col-md-4"> 
+		 	<label>Name<span>*</span></label>
+		</div>
+		<div class="col-md-8"> 
+			<input  name="name" ng-model="record.specializationName" id="specializationName_1" class="form-control" ng-pattern ="/^[a-zA-Z\s]*$/" required> 
+		</div>
+		<div class="col-md-12">Name is required</div>
+	</div>
+	
+   <div class="row">
+	<div class="col-md-4"> 
+	<label>Department<span>*</span></label> 
+	</div>
+	<div class="col-md-8"> 
+		<select ng-model="record.departmentId" class="form-control" required> 
+		<option value="">Select</option>
+		<option ng-repeat="department in departments" ng-value="department.id"
+	        ng-selected="department.id === record.departmentId">{{department.departmentName}}
+	    </option>
+	    </select>
+    </div>
+	</div>
+
+    <div class="row">
+	<div class="col-md-4">   <label>Description</label>
+	</div>
+	<div class="col-md-8"> <textarea name="description" class="form-control" ng-model="record.description"></textarea>
+	</div>
+	</div>
+
+	
+<input type="hidden" name="Id" ng-model="record.id"> 
+		
+
+	<!-- <md-button class="md-raised md-primary" ng-click="saveRecord()"
+		ng-hide="updatePage" ng-disabled="specializationCreateForm.$invalid"> Save </md-button>
+	<md-button class="md-raised md-primary" ng-click="updateData()"
+		ng-show="updatePage" ng-disabled="specializationCreateForm.$invalid">Update </md-button>
+	<md-button class="md-raised" data-ng-click="reset('specializationCreateForm')" >
+	Cancel </md-button> -->
+</form>
+
+
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+				        <button type="button" class="btn btn-primary">Save changes</button>
+				      </div>
+				    </div><!-- /.modal-content -->
+				  </div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+
+
+		<!-- Model End -->
+			<!-- <ng-include src="'pages/app.specialization/app.specialization.record.html'"></ng-include> -->
+
+			<!-- <md-sidenav class="md-sidenav md-whiteframe-4dp"
+				md-component-id="right" md-is-locked-open="lock" > <md-toolbar
 				class="md-theme-light">
-			<h1 class="md-toolbar-tools">Specialization {{currentPage}}</h1>
-			</md-toolbar> <create-specialization /> </md-sidenav>
+			<h1 class="md-toolbar-tools">Specialization {{currentPage}} <i class="material-icons" style="margin-left: 350px"  ng-click="cancelRecord()">cancel</i></h1>
+			</md-toolbar> <ng-include src="'pages/app.specialization/app.specialization.record.html'"></ng-include> </md-sidenav> -->
 		</section>
 	</div>
 </div>

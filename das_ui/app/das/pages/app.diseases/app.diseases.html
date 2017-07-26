@@ -58,8 +58,8 @@
 			<md-sidenav class="md-sidenav md-whiteframe-4dp"
 				md-component-id="right"> <md-toolbar
 				class="md-theme-light">
-			<h1 class="md-toolbar-tools">Diseases {{currentPage}}</h1>
-			</md-toolbar> <create-specialization /> </md-sidenav>
+			<h1 class="md-toolbar-tools">Diseases {{currentPage}} <i class="material-icons" style="margin-left: 380px" ng-click="cancelRecord()">cancel</i></h1>
+			</md-toolbar>  <ng-include src="'pages/app.diseases/app.diseases.record.html'"></md-sidenav>
 		</section>
 	</div>
 </div>
